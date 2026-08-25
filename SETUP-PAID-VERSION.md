@@ -42,3 +42,13 @@ Deploy this folder to Vercel. Vercel will expose:
 The ₹99 payment is verified on the server using Razorpay's signature. Do not replace that with a browser-only `localStorage` paid flag.
 
 The existing tracker still stores its study data in browser localStorage. For true cross-device user accounts, the tracker data should next be migrated to a user-scoped Supabase table.
+
+
+## Supabase project configured
+The frontend is configured with the Supabase project URL and publishable key supplied by the owner. Do not add or expose a Supabase service-role key in frontend files.
+
+## Important: run the database SQL
+Open Supabase → SQL Editor and run the complete `supabase.sql` file once. This creates the `profiles` table and the signup trigger used by Mission150.
+
+## Email confirmation
+If Supabase email confirmation is enabled, a new user must verify their email before logging in. If you want immediate login after signup during testing, disable email confirmation in Supabase Authentication settings.
