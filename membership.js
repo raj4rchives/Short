@@ -5,7 +5,7 @@
 const MISSION150_CONFIG = {
   SUPABASE_URL: "https://kjlyutzogjmhnzioxpuz.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_plHTaKfRzlnVfBYJtBN0mw_9pNnXwQf",
-  UPI_ID: "YOUR_UPI_ID@upi",
+  UPI_ID: "6900365026@superyes",
   UPI_NAME: "Mission150",
   PRICE_RUPEES: 99
 };
