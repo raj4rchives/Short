@@ -2,8 +2,8 @@
    Set these values before deployment. Supabase URL/anon key are safe to expose
    in frontend code; Razorpay secret NEVER belongs here. */
 const MISSION150_CONFIG = {
-  SUPABASE_URL: "YOUR_SUPABASE_URL",
-  SUPABASE_ANON_KEY: "YOUR_SUPABASE_ANON_KEY",
+  SUPABASE_URL: "https://kjlyutzogjmhnzioxpuz.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_plHTaKfRzlnVfBYJtBN0mw_9pNnXwQf",
   RAZORPAY_KEY_ID: "YOUR_RAZORPAY_KEY_ID",
   CREATE_ORDER_ENDPOINT: "/api/create-order",
   VERIFY_PAYMENT_ENDPOINT: "/api/verify-payment",
