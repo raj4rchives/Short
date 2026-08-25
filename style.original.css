@@ -602,11 +602,3 @@ body[data-theme="ember"]{--bg:#fff2ec;--panel:#ffffff;--line:#895f50;--text:#503
 .weekly-bar-fill{width:100%; min-height:0; background:var(--accent,#6b78a8); border-radius:9px 9px 3px 3px; transition:height .25s ease;}
 .weekly-bar-label{font-size:10px; color:var(--muted,#777); white-space:nowrap;}
 @media(max-width:600px){.weekly-bars{height:170px}.weekly-bar-track{height:115px;width:min(30px,70%)}.weekly-bar-label{font-size:9px}}
-/* ===== Mission150 Auth / Paid Access ===== */
-.auth-gate{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;padding:18px;background:#050505;box-sizing:border-box;overflow:auto}
-.auth-card{width:min(430px,100%);background:#111;border:1px solid #333;border-radius:24px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.5);color:#fff;box-sizing:border-box;text-align:center}
-.auth-brand{font-weight:1000;font-size:30px;letter-spacing:2px;margin-bottom:20px;color:#fff}.auth-brand span{color:#ffd400}
-.auth-card h2{margin:0 0 8px;font-size:24px}.auth-card>p{color:#aaa;margin:0 0 20px;font-size:14px}
-.auth-card form{display:grid;gap:10px}.auth-card input{width:100%;box-sizing:border-box;background:#1b1b1b;border:1px solid #3a3a3a;color:#fff;border-radius:12px;padding:13px 14px;outline:none}.auth-card input:focus{border-color:#ffd400}
-.auth-submit{width:100%;margin-top:4px}.link-btn{border:0;background:none;color:#ffd400;padding:12px;cursor:pointer;font-weight:700}.auth-msg{min-height:20px;margin-top:8px;color:#ff8c8c;font-size:13px}.auth-msg.ok{color:#7ee787}
-.payment-panel{margin-top:10px;padding-top:12px;border-top:1px solid #292929}.lock-icon{font-size:34px}.payment-panel h3{margin:7px 0}.payment-panel p{color:#aaa;font-size:13px;margin:0 0 8px}.price{font-size:42px;font-weight:1000;margin:8px 0 14px}.price small{font-size:12px;color:#999;font-weight:500}

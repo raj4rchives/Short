@@ -1,0 +1,6 @@
+{
+  "name":"mission150",
+  "private":true,
+  "version":"1.0.0",
+  "dependencies":{"razorpay":"^2.9.6","@supabase/supabase-js":"^2.0.0"}
+}

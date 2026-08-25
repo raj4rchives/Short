@@ -5,41 +5,15 @@
 <meta name="theme-color" content="#000000">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mission150</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src="membership.js" defer></script>
+<title>370R JEE Advanced Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="authGate" class="auth-gate">
-  <div class="auth-card">
-    <div class="auth-brand">MISSION<span>150</span></div>
-    <h2 id="authTitle">Login to Mission150</h2>
-    <p id="authSubtitle">Track your JEE preparation in one place.</p>
-    <form id="authForm">
-      <input id="authEmail" type="email" placeholder="Email" autocomplete="email" required>
-      <input id="authPassword" type="password" placeholder="Password" autocomplete="current-password" minlength="6" required>
-      <button class="primary auth-submit" type="submit" id="authSubmit">Login</button>
-    </form>
-    <button class="link-btn" id="toggleAuth" type="button">Create a new account</button>
-    <div id="authMsg" class="auth-msg"></div>
-    <div id="paymentPanel" class="payment-panel" hidden>
-      <div class="lock-icon">🔒</div>
-      <h3>Mission150 is locked</h3>
-      <p>Pay once and unlock the full tracker.</p>
-      <div class="price">₹99 <small>one-time</small></div>
-      <button class="primary auth-submit" id="payBtn" type="button">Unlock for ₹99</button>
-      <button class="link-btn" id="logoutBtn" type="button">Logout</button>
-    </div>
-  </div>
-</div>
-<div id="appContent" hidden>
 <div class="wrap">
   <div class="top">
     <div>
-      <h1>Mission150</h1>
-      <div class="sub">Your JEE preparation dashboard — study log → dashboard → export PDF.</div>
+      <h1>370R JEE Advanced Tracker</h1>
+      <div class="sub">Unlimited study log → keep adding days as long as you study → dashboard → export PDF.</div>
     </div>
     <div class="actions">
       <button class="secondary top-theme-btn" id="topThemeBtn" type="button" onclick="openFeature('themes')">🎨 Themes</button>
