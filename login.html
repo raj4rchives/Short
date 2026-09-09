@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Log in — EXAMYWEB</title><link rel="stylesheet" href="style.css"></head>
-<body class="auth mono">
-<div class="auth-shell">
-  <a class="brand auth-brand" href="index.html"><span class="logo">E</span><span>EXAMY<span>WEB</span></span></a>
-  <div class="auth-card">
-    <div class="eyebrow">WELCOME BACK</div><h1>Log in to<br>your tracker.</h1><p class="auth-copy">Continue your study streak and keep your preparation on track.</p>
-    <form id="loginForm">
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Log in — EXAMYWEB</title><link rel="stylesheet" href="style.css"></head>
+<body class="login-page">
+<div class="login-wrap">
+  <a class="back" href="index.html">← EXAMYWEB</a>
+  <div class="login-card">
+    <div class="eyebrow">EXAMYWEB · STUDY TRACKER</div>
+    <h1>Welcome back.</h1>
+    <p>Log in to continue tracking your preparation.</p>
+    <form onsubmit="event.preventDefault(); location.href='index.html';">
       <label>Email<input type="email" placeholder="you@example.com" required></label>
       <label>Password<input type="password" placeholder="••••••••" required></label>
-      <div class="form-row"><label class="check"><input type="checkbox"> Remember me</label><a href="#" onclick="return false">Forgot password?</a></div>
-      <button class="btn primary full" type="submit">Log in <span>→</span></button>
+      <button class="submit" type="submit">Log in →</button>
     </form>
-    <div class="divider"><span>OR</span></div>
-    <a class="btn secondary full" href="signup.html">Create free account</a>
-    <p class="switch">Don't have an account? <a href="signup.html">Sign up</a></p>
+    <div class="free">FREE FOREVER · NO PAYMENT REQUIRED</div>
   </div>
-  <small class="auth-foot">Free forever · No payment required</small>
 </div>
-<script src="script.js"></script></body></html>
+</body>
+</html>

@@ -1,63 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <title>EXAMYWEB — Study Smarter</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXAMYWEB — Study Tracker</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="mono">
-<header class="nav">
-  <a class="brand" href="index.html"><span class="logo">E</span><span>EXAMY<span>WEB</span></span></a>
-  <nav class="desktop-nav">
-    <a href="#features">Features</a><a href="#tracker">Tracker</a><a href="#about">About</a>
-  </nav>
-  <a class="nav-login" href="login.html">Log in</a>
+<body>
+<header>
+  <div class="brand"><span class="logo">E</span><b>EXAMYWEB</b></div>
+  <a class="login-btn" href="login.html">Log in</a>
 </header>
 
 <main>
-<section class="hero wrap">
+<section class="hero">
   <div class="eyebrow">STUDY TRACKING · JEE · NEET · BOARDS</div>
-  <h1>Study smarter.<br><strong>Track everything.</strong></h1>
-  <p class="hero-copy">One clean dashboard for your daily study, focus time, syllabus, questions, PYQs, homework and progress. Built for serious exam preparation.</p>
-  <div class="actions">
-    <a class="btn primary" href="signup.html">Start for free <span>→</span></a>
-    <a class="btn secondary" href="#tracker">Explore tracker</a>
+  <h1>Study smarter.<br><span>Track everything.</span></h1>
+  <p>One clean dashboard for your daily study, focus time, syllabus, questions, PYQs, homework and progress. Built for serious exam preparation.</p>
+  <div class="buttons">
+    <a class="btn black" href="login.html">Open tracker →</a>
+    <a class="btn white" href="#tracker">Explore tracker</a>
   </div>
-  <div class="ticks"><span>✓ No ads</span><span>✓ Exam-focused</span><span>✓ Free forever</span></div>
-
-  <div class="dashboard-card" aria-label="Tracker preview">
-    <div class="dash-top"><span>EXAMYWEB</span><b>Dashboard <i></i></b></div>
-    <div class="muted">Today's focus</div><div class="big-number">4h 32m</div>
-    <div class="up">+18% vs last week</div>
-    <div class="stats">
-      <div><small>Questions</small><b>126</b></div><div><small>Lectures</small><b>08</b></div>
-      <div><small>Streak</small><b>17d</b></div><div><small>PYQ</small><b>42</b></div>
-    </div>
-    <div class="bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:43%"></i><i style="height:66%"></i><i style="height:51%"></i><i style="height:56%"></i><i style="height:80%"></i></div>
-    <div class="focus-row">Focus Mode <b>→ 01:42:18</b></div>
-  </div>
+  <div class="checks">✓ No ads &nbsp;&nbsp; ✓ Exam-focused &nbsp;&nbsp; ✓ Free forever</div>
 </section>
 
-<section id="tracker" class="section wrap">
-  <div class="eyebrow">THE TRACKER</div>
-  <h2>Everything you need<br>to stay consistent.</h2>
-  <p class="section-copy">EXAMYWEB turns your study routine into measurable progress.</p>
-  <div id="features" class="feature-grid">
-    <article><span class="icon">◷</span><h3>Focus Mode</h3><p>Log study time manually, save sessions and see your focus history date-wise.</p></article>
-    <article><span class="icon">▣</span><h3>Daily Tracking</h3><p>Log lectures, homework, DPP, PYQ and question counts in one place.</p></article>
-    <article><span class="icon">◒</span><h3>Syllabus Progress</h3><p>Keep every chapter visible and know exactly what is completed and pending.</p></article>
-    <article><span class="icon">↗</span><h3>Progress Reports</h3><p>See weekly trends, streaks and subject-wise performance without distractions.</p></article>
+<section id="tracker" class="preview">
+  <div class="preview-top"><b>370R JEE ADVANCED TRACKER</b><span>MONO</span></div>
+  <div class="tool-row">
+    <div>☰<small>Menu</small></div><div>◈<small>Themes</small></div><div>Save</div><div>Load</div><div class="danger">Clear</div>
   </div>
+  <div class="download">Download Filled PDF</div>
+  <div class="panel">
+    <label>Start date<input type="date"></label>
+    <button>Fill Dates</button>
+    <label>JEE Mains target date<input type="date" value="2027-01-24"></label>
+    <div class="pill">Target: 70–80 questions/day · CRACK JEE</div>
+  </div>
+  <div class="countdown"><small>JEE MAINS COUNTDOWN</small><strong>137 DAYS LEFT</strong><span>24 January 2027</span></div>
+  <h2>Dashboard</h2>
 </section>
 
-<section id="about" class="quote wrap">
-  <div><span class="eyebrow">BUILT FOR SERIOUS PREPARATION</span><h2>Less distraction.<br>More execution.</h2><p>Made for JEE, NEET, JEE Advanced, Boards, CUET and other exams.</p></div>
+<section class="features">
+  <div><b>01</b><h3>Focus Mode</h3><p>Manually log study time, questions and notes. No unnecessary timer.</p></div>
+  <div><b>02</b><h3>Daily Tracking</h3><p>Track lectures, homework, DPP, PYQ and question counts in one place.</p></div>
+  <div><b>03</b><h3>Progress</h3><p>See your preparation clearly and stay consistent every day.</p></div>
 </section>
 </main>
 
-<footer><div>EXAMYWEB</div><p>Made for JEE · NEET · JEE ADVANCED · BOARDS · CUET · OTHER EXAMS</p><small>Founder — Raj Sharma</small></footer>
-<script src="script.js"></script>
+<footer>EXAMYWEB · Made for serious exam preparation · Founder — Raj Sharma</footer>
 </body>
 </html>
