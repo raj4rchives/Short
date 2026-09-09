@@ -5,47 +5,230 @@
 <title>EXAMYWEB — Study Tracker</title>
 <link rel="stylesheet" href="stylehe.css">
 </head>
+
 <body>
 <header>
   <div class="brand"><span class="logo">E</span><b>EXAMYWEB</b></div>
+  <nav class="desktop-nav">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#contact">Contact</a>
+  </nav>
   <a class="login-btn" href="login.html">Log in</a>
 </header>
 
 <main>
-<section class="hero">
-  <div class="eyebrow">STUDY TRACKING · JEE · NEET · BOARDS</div>
-  <h1>Study smarter.<br><span>Track everything.</span></h1>
-  <p>One clean dashboard for your daily study, focus time, syllabus, questions, PYQs, homework and progress. Built for serious exam preparation.</p>
-  <div class="buttons">
-    <a class="btn black" href="tracker.html">Open tracker →</a>
-    <a class="btn white" href="#tracker">Explore tracker</a>
-  </div>
-  <div class="checks">✓ No ads &nbsp;&nbsp; ✓ Exam-focused &nbsp;&nbsp; ✓ Free forever</div>
-</section>
+  <section class="hero">
+    <div class="eyebrow">STUDY TRACKING · JEE · NEET · BOARDS</div>
+    <h1>Study smarter.<br><span>Track everything.</span></h1>
+    <p>One clean dashboard for your daily study, focus time, syllabus, questions, PYQs, homework and progress. Built for serious exam preparation.</p>
+    <div class="buttons">
+      <a class="btn black" href="tracker.html">Open tracker →</a>
+      <a class="btn white" href="#features">Explore features</a>
+    </div>
+    <div class="checks">✓ No ads &nbsp;&nbsp; ✓ Exam-focused &nbsp;&nbsp; ✓ Simple &nbsp;&nbsp; ✓ Mobile friendly</div>
+  </section>
 
-<section id="tracker" class="preview">
-  <div class="preview-top"><b>370R JEE ADVANCED TRACKER</b><span>WEB</span></div>
-  <div class="tool-row">
-    <div>☰<small>Menu</small></div><div>◈<small>Themes</small></div><div>Save</div><div>Load</div><div class="danger">Clear</div>
-  </div>
-  <div class="download">Download Filled PDF</div>
-  <div class="panel">
-    <label>Start date<input type="date"></label>
-    <button>Fill Dates</button>
-    <label>JEE Mains target date<input type="date" value="2027-01-24"></label>
-    <div class="pill">Target: Your questions/day · CRACK JEE</div>
-  </div>
-  <div class="countdown"><small>JEE MAINS COUNTDOWN</small><strong>137 DAYS LEFT</strong><span>24 January 2027</span></div>
-  <h2>Dashboard</h2>
-</section>
+  <section class="dashboard-bento" id="features">
+    <div class="section-heading">
+      <div class="eyebrow">ONE DASHBOARD</div>
+      <h2>Everything you need to stay on track.</h2>
+      <p>Plan, study, practice and review without jumping between different tools.</p>
+    </div>
 
-<section class="features">
-  <div><b>01</b><h3>Focus Mode</h3><p>Manually log study time, questions and notes. No unnecessary timer.</p></div>
-  <div><b>02</b><h3>Daily Tracking</h3><p>Track lectures, homework, DPP, PYQ and question counts in one place.</p></div>
-  <div><b>03</b><h3>Progress</h3><p>See your preparation clearly and stay consistent every day.</p></div>
-</section>
+    <div class="bento-grid">
+      <a class="feature-card feature-large" href="tracker.html">
+        <span class="feature-number">01</span>
+        <div class="feature-icon">📊</div>
+        <h3>Study Dashboard</h3>
+        <p>See your preparation at a glance with progress, targets, dates and daily statistics.</p>
+        <span class="feature-link">Open dashboard →</span>
+      </a>
+
+      <a class="feature-card" href="focus.html">
+        <span class="feature-number">02</span>
+        <div class="feature-icon">⏱️</div>
+        <h3>Focus Mode</h3>
+        <p>Record focused study sessions and build a consistent routine.</p>
+        <span class="feature-link">Focus →</span>
+      </a>
+
+      <a class="feature-card accent-card" href="pyq.html">
+        <span class="feature-number">03</span>
+        <div class="feature-icon">📝</div>
+        <h3>PYQ Practice</h3>
+        <p>Track chapter-wise PYQs and question practice.</p>
+        <span class="feature-link">Practice →</span>
+      </a>
+
+      <a class="feature-card" href="todo.html">
+        <span class="feature-number">04</span>
+        <div class="feature-icon">☑️</div>
+        <h3>Daily TODO</h3>
+        <p>Turn your daily plan into clear, checkable tasks.</p>
+        <span class="feature-link">Plan today →</span>
+      </a>
+
+      <a class="feature-card feature-wide" href="syllabus.html">
+        <span class="feature-number">05</span>
+        <div class="feature-icon">📚</div>
+        <h3>Syllabus Tracker</h3>
+        <p>Organize chapters and monitor what is completed, pending or in progress.</p>
+        <span class="feature-link">View syllabus →</span>
+      </a>
+
+      <a class="feature-card" href="weekly.html">
+        <span class="feature-number">06</span>
+        <div class="feature-icon">📈</div>
+        <h3>Weekly Reports</h3>
+        <p>Review your weekly performance and identify what needs attention.</p>
+        <span class="feature-link">View report →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="preview" id="preview">
+    <div class="preview-top"><b>EXAMYWEB STUDY DASHBOARD</b><span>LIVE PREVIEW</span></div>
+    <div class="tool-row">
+      <div>☰<small>Menu</small></div>
+      <div>◈<small>Themes</small></div>
+      <div>Save</div>
+      <div>Load</div>
+      <div class="danger">Clear</div>
+    </div>
+    <div class="download">Download Filled PDF</div>
+
+    <div class="preview-stats">
+      <div><small>STUDY TIME</small><strong>06h 25m</strong><span>+12% this week</span></div>
+      <div><small>QUESTIONS</small><strong>184</strong><span>Target 200</span></div>
+      <div><small>PYQs</small><strong>92</strong><span>Chapter-wise</span></div>
+      <div><small>COMPLETION</small><strong>78%</strong><span>On track</span></div>
+    </div>
+
+    <div class="panel">
+      <div>
+        <label>Today's focus</label>
+        <strong>Physics · Rotation</strong>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><span></span></div>
+        <small>78% daily target completed</small>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <small>JEE MAINS COUNTDOWN</small>
+      <strong id="countdownDays">— DAYS LEFT</strong>
+      <span>24 January 2027</span>
+    </div>
+  </section>
+
+  <section class="quick-stats">
+    <div><strong>6+</strong><span>Core tools</span></div>
+    <div><strong>24/7</strong><span>Access</span></div>
+    <div><strong>1</strong><span>Simple dashboard</span></div>
+    <div><strong>∞</strong><span>Study sessions</span></div>
+  </section>
+
+  <section class="how-section" id="how">
+    <div class="section-heading">
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2>Simple enough to use every day.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Set your plan</h3><p>Add your dates, subjects, chapters and targets.</p></div>
+      <div class="step"><b>02</b><h3>Study & log</h3><p>Record lectures, homework, PYQs, questions and focus time.</p></div>
+      <div class="step"><b>03</b><h3>Review progress</h3><p>Use reports and dashboard stats to stay consistent.</p></div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-card">
+      <span class="contact-badge">CONTACT US</span>
+      <h2>Need help?</h2>
+      <p>Have a question, suggestion, or issue with ExamyWeb? Contact support directly.</p>
+      <div class="contact-actions">
+        <a class="whatsapp-btn" href="https://wa.me/916900365026?text=Hi%2C%20I%20need%20help%20with%20ExamyWeb." target="_blank" rel="noopener noreferrer">💬 WhatsApp Support</a>
+        <a class="btn white" href="mailto:support@examyweb.com">✉ Email Support</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>Built to keep your JEE preparation consistent and on track.</footer>
+<footer>
+  <div><b>EXAMYWEB</b><span>Built to keep your exam preparation consistent and on track.</span></div>
+  <div class="footer-links">
+    <a href="tracker.html">Tracker</a>
+    <a href="focus.html">Focus</a>
+    <a href="pyq.html">PYQ</a>
+    <a href="todo.html">TODO</a>
+  </div>
+  <small>Founder: Raj Sharma</small>
+</footer>
+
+<style>
+/* Homepage additions — keeps the existing Examy stylesheet/theme and only adds structure/features. */
+.desktop-nav{display:flex;gap:24px;align-items:center;margin-left:auto;margin-right:24px}
+.desktop-nav a,footer a{color:inherit;text-decoration:none}
+.section-heading{max-width:760px;margin:80px auto 30px;text-align:center}
+.section-heading h2{font-size:clamp(32px,6vw,62px);line-height:1.02;margin:12px 0}
+.section-heading p{font-size:18px;line-height:1.6}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature-card{display:flex;flex-direction:column;min-height:250px;padding:28px;border:3px solid #111;border-radius:22px;background:#fff;color:#111;text-decoration:none;box-shadow:7px 7px 0 #111;transition:.16s ease}
+.feature-card:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #111}
+.feature-large{grid-column:span 2;min-height:300px}
+.feature-wide{grid-column:span 2}
+.feature-number{font-weight:900;font-size:13px;opacity:.6}
+.feature-icon{font-size:34px;margin-top:18px}
+.feature-card h3{font-size:28px;margin:10px 0 7px}
+.feature-card p{line-height:1.55;margin:0 0 18px}
+.feature-link{margin-top:auto;font-weight:800}
+.accent-card{background:#111;color:#fff;border-color:#111}
+.preview{margin-top:80px}
+.preview-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.preview-stats>div,.quick-stats>div{border:2px solid #111;background:#fff;padding:20px;border-radius:16px}
+.preview-stats strong,.preview-stats span,.preview-stats small{display:block}
+.preview-stats strong{font-size:30px;margin:6px 0}
+.progress-wrap{margin-top:18px}
+.progress-bar{height:14px;border:2px solid #111;border-radius:20px;overflow:hidden}
+.progress-bar span{display:block;width:78%;height:100%;background:#111}
+.quick-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px 0}
+.quick-stats strong{display:block;font-size:38px}
+.quick-stats span{opacity:.65}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{padding:28px;border:3px solid #111;background:#fff;box-shadow:6px 6px 0 #111}
+.step b{font-size:14px}.step h3{font-size:25px;margin:14px 0 8px}.step p{line-height:1.5}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-section{width:100%;padding:70px 0}
+.contact-card{max-width:900px;margin:auto;padding:40px;border:3px solid #111;border-radius:24px;background:#fff;box-shadow:8px 8px 0 #111;text-align:center}
+.contact-badge{display:inline-block;padding:8px 14px;border:2px solid #111;border-radius:999px;font-size:13px;font-weight:800}
+.contact-card h2{font-size:clamp(35px,6vw,58px);margin:16px 0 8px}
+.contact-card p{max-width:650px;margin:0 auto 25px;line-height:1.6}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:9px;padding:15px 22px;border:3px solid #111;border-radius:14px;background:#25D366;color:#111;text-decoration:none;font-weight:900;box-shadow:5px 5px 0 #111}
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:35px 0;margin-top:40px;border-top:3px solid #111}
+footer div span{display:block;opacity:.65;margin-top:6px}
+.footer-links{display:flex;gap:16px;font-weight:700}
+@media(max-width:760px){
+  .desktop-nav{display:none}.bento-grid,.steps{grid-template-columns:1fr}
+  .feature-large,.feature-wide{grid-column:span 1}
+  .preview-stats,.quick-stats{grid-template-columns:repeat(2,1fr)}
+  .contact-card{padding:28px 18px}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<script>
+(function(){
+  const target = new Date('2027-01-24T00:00:00');
+  const el = document.getElementById('countdownDays');
+  function update(){
+    const now = new Date();
+    const diff = Math.ceil((target-now)/86400000);
+    el.textContent = (diff > 0 ? diff : 0) + ' DAYS LEFT';
+  }
+  update();
+  setInterval(update, 60000);
+})();
+</script>
 </body>
 </html>
