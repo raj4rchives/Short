@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
   <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#7566d8">
 <!-- DEFAULT TRACKER THEME: change "mono" to any theme key from the Themes panel -->
 <meta name="tracker-default-theme" content="mono">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>370R JEE Advanced Tracker by Raj Sharma</title>
 <link rel="stylesheet" href="style.css">
+
+
 </head>
-<body>
+
+  <body>
 <div class="wrap">
   <div class="top">
     <div>
       <h1>370R JEE Advanced Tracker</h1>
-      <div class="sub">Unlimited study log → keep adding days as long as you study → dashboard → export PDF.</div>
+      <div class="sub">Built to keep your JEE preparation consistent and on track.</div>
     </div>
     <div class="actions">
-      <button class="secondary top-menu-btn" id="topMenuBtn" type="button" onclick="openFeature('menu')"><span class="top-btn-icon">☰</span><span class="top-btn-label">Menu</span></button>
-      <button class="secondary top-theme-btn" id="topThemeBtn" type="button" onclick="openFeature('themes')"><span class="top-btn-icon">🎨</span><span class="top-btn-label">Themes</span></button>
+      <button class="secondary top-menu-btn" id="topMenuBtn" type="button" onclick="location.href='menu.html'"><span class="top-btn-icon">☰</span><span class="top-btn-label">Menu</span></button>
+      <button class="secondary top-theme-btn" id="topThemeBtn" type="button" onclick="location.href='themes.html'"><span class="top-btn-icon">🎨</span><span class="top-btn-label">Themes</span></button>
       <button class="secondary" id="saveBtn">Save</button>
       <button class="secondary" id="loadBtn">Load</button>
       <button class="danger" id="clearBtn">Clear</button>
@@ -55,26 +57,30 @@
       </div>
 
       <div id="menuView" class="feature-view">
-        <button class="menu-feature-btn" data-open-feature="syllabus">
-          <span>📚</span><div><b>Syllabus Tracker</b><small>Add chapter + total lectures → print A4 tracker</small></div>
+        <button class="menu-feature-btn" data-page="syllabus.html" onclick="location.href='syllabus.html'">
+          <span>➔</span><div><b>Syllabus Tracker</b><small>Add chapter + total lectures → print A4 tracker</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="pyq">
-          <span>☑️</span><div><b>PYQ Question Tracker</b><small>Chapter-wise 10-question blocks + revision ticks</small></div>
+        <button class="menu-feature-btn" data-page="pyq.html" onclick="location.href='pyq.html'">
+          <span>➔
+          </span><div><b>PYQ Question Tracker</b><small>Chapter-wise 10-question blocks + revision ticks</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="backup">
-          <span>💾</span><div><b>Backup & Import</b><small>Export all tracker data to JSON or restore it later</small></div>
+        <button class="menu-feature-btn" data-page="backup.html" onclick="location.href='backup.html'">
+          <span>➔
+          </span><div><b>Backup & Import</b><small>Export all tracker data to JSON or restore it later</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="themes">
-          <span>🎨</span><div><b>Themes</b><small>12 premium themes — each with a different visual language</small></div>
+        <button class="menu-feature-btn" data-page="themes.html" onclick="location.href='themes.html'">
+          <span>➔
+          </span><div><b>Themes</b><small>62 visual themes — different layouts, not just colours</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="todo">
-          <span>📝</span><div><b>Daily TODO</b><small>Date-wise tasks + PDF + analysis</small></div>
+        <button class="menu-feature-btn" data-page="todo.html" onclick="location.href='todo.html'">
+          <span>➔
+          </span><div><b>Daily TODO</b><small>Date-wise tasks + PDF + analysis</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="focus">
-          <span>⏱️</span><div><b>Focus Mode</b><small>Manual focus time + study logs + analysis</small></div>
+        <button class="menu-feature-btn" data-page="focus.html" onclick="location.href='focus.html'">
+          <span>➔</span><div><b>Focus Mode</b><small>Manual focus time + study logs + analysis</small></div>
         </button>
-        <button class="menu-feature-btn" data-open-feature="weekly">
-          <span>📊</span><div><b>Weekly Report</b><small>Questions • Lectures • Focus time chart</small></div>
+        <button class="menu-feature-btn" data-page="weekly.html" onclick="location.href='weekly.html'">
+          <span>➔</span><div><b>Weekly Report</b><small>Questions • Lectures • Focus time chart</small></div>
         </button>
       </div>
 
@@ -130,18 +136,10 @@
       <div id="themesView" class="feature-view" hidden>
         <p class="note">Pick any theme. It is saved automatically. <b>Default theme is Mono (black & white).</b> To change the default, edit <code>&lt;meta name="tracker-default-theme" content="mono"&gt;</code> in this HTML file.</p>
         <div class="theme-grid theme-grid-48" id="themeGrid">
-          <button class="theme-option" data-theme="mono"><span class="theme-dot theme-mono"></span><div><b>Mono</b><small>Pure black &amp; white</small></div></button>
-          <button class="theme-option" data-theme="bento"><span class="theme-dot theme-bento"></span><div><b>Bento</b><small>Modular premium cards</small></div></button>
-          <button class="theme-option" data-theme="brutalist"><span class="theme-dot theme-brutalist"></span><div><b>Brutalist</b><small>Raw, bold &amp; sharp</small></div></button>
-          <button class="theme-option" data-theme="blueprint"><span class="theme-dot theme-blueprint"></span><div><b>Blueprint</b><small>Technical grid</small></div></button>
-          <button class="theme-option" data-theme="terminal"><span class="theme-dot theme-terminal"></span><div><b>Terminal</b><small>Developer console</small></div></button>
-          <button class="theme-option" data-theme="glass"><span class="theme-dot theme-glass"></span><div><b>Glass</b><small>Frosted depth</small></div></button>
-          <button class="theme-option" data-theme="swiss"><span class="theme-dot theme-swiss"></span><div><b>Swiss</b><small>Editorial precision</small></div></button>
-          <button class="theme-option" data-theme="midnight"><span class="theme-dot theme-midnight"></span><div><b>Midnight</b><small>Luxury dark</small></div></button>
-          <button class="theme-option" data-theme="neo"><span class="theme-dot theme-neo"></span><div><b>Neo</b><small>Soft neo-brutal</small></div></button>
-          <button class="theme-option" data-theme="paper"><span class="theme-dot theme-paper"></span><div><b>Paper</b><small>Minimal journal</small></div></button>
-          <button class="theme-option" data-theme="cyber"><span class="theme-dot theme-cyber"></span><div><b>Cyber</b><small>Futuristic neon</small></div></button>
-          <button class="theme-option" data-theme="obsidian"><span class="theme-dot theme-obsidian"></span><div><b>Obsidian</b><small>Premium monochrome</small></div></button>
+          <button class="theme-option" data-theme="bento"><span class="theme-dot theme-bento"></span><b>Bento</b></button>
+          <button class="theme-option" data-theme="brutalist"><span class="theme-dot theme-brutalist"></span><b>Brutalist</b></button>
+          <button class="theme-option" data-theme="mono"><span class="theme-dot theme-mono"></span><b>Mono</b></button>
+          <button class="theme-option" data-theme="blueprint"><span class="theme-dot theme-blueprint"></span><b>Blueprint</b></button>
         </div>
       </div>
 

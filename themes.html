@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7566d8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="feature-standalone">
+<div class="feature-shell">
+  <nav class="feature-nav">
+    <div class="nav-links">
+      <a class="feature-back" href="menu.html">← Menu</a>
+      <a class="feature-home" href="tracker.html">⌂ Tracker</a>
+    </div>
+    <a class="feature-back" href="index.html">Home</a>
+  </nav>
+  <main class="feature-page-card">
+    <h1 class="feature-page-title">🎨 Themes</h1>
+    <p class="feature-page-sub">Choose a theme. Your selection is shared with the main tracker.</p>
+    
+        <p class="note">Pick any theme. It is saved automatically. <b>Default theme is Mono (black & white).</b> To change the default, edit <code>&lt;meta name="tracker-default-theme" content="mono"&gt;</code> in this HTML file.</p>
+        <div class="theme-grid theme-grid-48" id="themeGrid">
+          <button class="theme-option" data-theme="bento"><span class="theme-dot theme-bento"></span><b>Bento</b></button>
+          <button class="theme-option" data-theme="brutalist"><span class="theme-dot theme-brutalist"></span><b>Brutalist</b></button>
+          <button class="theme-option" data-theme="mono"><span class="theme-dot theme-mono"></span><b>Mono</b></button>
+          <button class="theme-option" data-theme="blueprint"><span class="theme-dot theme-blueprint"></span><b>Blueprint</b></button>
+        </div>
+      
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

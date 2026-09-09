@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7566d8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="feature-standalone">
+<div class="feature-shell">
+  <nav class="feature-nav">
+    <div class="nav-links">
+      <a class="feature-back" href="menu.html">← Menu</a>
+      <a class="feature-home" href="tracker.html">⌂ Tracker</a>
+    </div>
+    <a class="feature-back" href="index.html">Home</a>
+  </nav>
+  <main class="feature-page-card">
+    <h1 class="feature-page-title">📊 Weekly Report</h1>
+    <p class="feature-page-sub">Review questions, lectures, focus time and TODO completion by week.</p>
+    
+        <div class="weekly-toolbar">
+          <div class="small"><label>Week ending</label><input id="weeklyEndDate" type="date"></div>
+          <button class="secondary" id="weeklyThisWeekBtn">This Week</button>
+        </div>
+        <div class="todo-analysis weekly-stats">
+          <div class="todo-stat"><b id="weeklyQuestions">0</b><span>Questions</span></div>
+          <div class="todo-stat"><b id="weeklyLectures">0</b><span>Lectures</span></div>
+          <div class="todo-stat"><b id="weeklyFocus">0m</b><span>Focus time</span></div>
+          <div class="todo-stat"><b id="weeklyTasks">0%</b><span>TODO completion</span></div>
+        </div>
+        <div class="weekly-chart-card"><h3>Questions / day</h3><div class="weekly-bars" id="weeklyQuestionsChart"></div></div>
+        <div class="weekly-chart-card"><h3>Lectures / day</h3><div class="weekly-bars" id="weeklyLecturesChart"></div></div>
+        <div class="weekly-chart-card"><h3>Focus time / day</h3><div class="weekly-bars" id="weeklyFocusChart"></div></div>
+      
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

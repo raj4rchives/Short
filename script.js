@@ -70,7 +70,14 @@ function addRows(count = 15) {
 }
 
 function rowsData() {
-  if (!tbody) return [];
+  if (!tbody) {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+      return saved && Array.isArray(saved.rows) ? saved.rows : [];
+    } catch (e) {
+      return [];
+    }
+  }
   return [...tbody.querySelectorAll("tr")].map(tr => {
     const o = {};
     tr.querySelectorAll("input").forEach(i => o[i.dataset.f] = i.value);
@@ -539,7 +546,7 @@ function updateDashboard(selectedDateData) {
 
 
 /* =========================================================
-   MENU + PREMIUM THEMES + DAILY TODO + MANUAL FOCUS MODE
+   MENU + 62 THEMES + DAILY TODO + MANUAL FOCUS MODE
    These features use separate localStorage keys and do not
    alter the existing tracker data.
    ========================================================= */
@@ -608,9 +615,9 @@ function initFeatureMenu() {
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeFeature(); });
 }
 
-/* ---------- Premium theme studio ---------- */
+/* ---------- 62 themes ---------- */
 const THEMES = [
-  "mono","bento","brutalist","blueprint","terminal","glass","swiss","midnight","neo","paper","cyber","obsidian"
+  "bento","brutalist","mono","blueprint"
 ];
 
 function getDefaultTheme() {

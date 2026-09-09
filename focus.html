@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7566d8">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="feature-standalone">
+<div class="feature-shell">
+  <nav class="feature-nav">
+    <div class="nav-links">
+      <a class="feature-back" href="menu.html">← Menu</a>
+      <a class="feature-home" href="tracker.html">⌂ Tracker</a>
+    </div>
+    <a class="feature-back" href="index.html">Home</a>
+  </nav>
+  <main class="feature-page-card">
+    <h1 class="feature-page-title">⏱️ Focus Mode</h1>
+    <p class="feature-page-sub">Log study time and review your focus history by date.</p>
+    
+        <div class="focus-hero">
+          <div>
+            <div class="focus-kicker">MANUAL STUDY LOG</div>
+            <h3>Log your focus time</h3>
+            <p>No stopwatch. Just enter how long you studied and save it.</p>
+          </div>
+          <div class="focus-hero-badge">⏱ <b>Manual only</b><span>No live timer</span></div>
+        </div>
+        <div class="focus-controls manual-focus-card">
+          <div class="focus-fields">
+            <div><label>Subject</label><select id="focusSubject"><option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Other</option></select></div>
+            <div><label>Activity</label><select id="focusActivity"><option>Lecture</option><option>Questions</option><option>Revision</option><option>DPP</option><option>PYQ</option><option>Other</option></select></div>
+            <div class="focus-duration-field"><label>Study time (minutes)</label><input id="focusManualMinutes" type="number" min="1" max="1440" inputmode="numeric" placeholder="e.g. 90"></div>
+            <div><label>Questions</label><input id="focusQuestions" type="number" min="0" value="0" inputmode="numeric"></div>
+            <div class="focus-date-field"><label>Study date</label><input id="focusManualDate" type="date"></div>
+            <div><label>Note</label><input id="focusNote" type="text" maxlength="100" placeholder="Optional — chapter, topic, etc."></div>
+          </div>
+          <div class="focus-presets" aria-label="Quick time presets">
+            <span>Quick add:</span>
+            <button type="button" class="focus-chip" data-focus-min="30">30m</button>
+            <button type="button" class="focus-chip" data-focus-min="60">1h</button>
+            <button type="button" class="focus-chip" data-focus-min="90">1h 30m</button>
+            <button type="button" class="focus-chip" data-focus-min="120">2h</button>
+          </div>
+          <div class="focus-buttons">
+            <button class="primary focus-save-main" id="focusManualSaveBtn">＋ Add Focus Log</button>
+          </div>
+        </div>
+        <div class="todo-analysis focus-analysis">
+          <div class="todo-stat"><b id="focusTodayMinutes">0m</b><span>Today focus</span></div>
+          <div class="todo-stat"><b id="focusTodayQuestions">0</b><span>Questions</span></div>
+          <div class="todo-stat"><b id="focusTotalMinutes">0m</b><span>Total focus</span></div>
+          <div class="todo-stat"><b id="focusLogCount">0</b><span>Logs</span></div>
+        </div>
+        <div class="todo-toolbar">
+          <div class="todo-filter-wrap"><label>Show logs for</label><input id="focusFilterDate" type="date"></div>
+          <button class="secondary" id="focusPdfBtn">📄 Download Focus PDF</button>
+        </div>
+        <div class="todo-list" id="focusList"><div class="todo-empty">No focus logs yet.</div></div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
