@@ -1,10 +1,10 @@
 {
-  "name": "Mission150",
-  "short_name": "Mission150",
+  "name": "JEE Tracker",
+  "short_name": "JEE Tracker",
   "start_url": "./",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#7566d8",
+  "background_color": "#f5f4fb",
   "icons": [
     {
       "src": "icon-192.png",

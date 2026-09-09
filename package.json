@@ -1,6 +1,5 @@
 {
-  "name":"mission150",
-  "private":true,
-  "version":"1.0.0",
-  "dependencies":{"razorpay":"^2.9.6","@supabase/supabase-js":"^2.0.0"}
+  "name":"examyweb-portal","version":"1.0.0","private":true,
+  "scripts":{"start":"node server.js"},
+  "dependencies":{"dotenv":"^16.4.5","express":"^4.21.2","paytm-pg-node-sdk":"^2.2.0"}
 }
