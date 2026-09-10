@@ -610,9 +610,8 @@ function initFeatureMenu() {
 
 /* ---------- 62 themes ---------- */
 const THEMES = [
-  "bento","brutalist","mono","blueprint","mono-red","mono-blue","mono-green","mono-purple",
-  "bento-coral","bento-mint","bento-lavender","bento-ocean","bento-sunset",
-  "brutalist-blue","brutalist-green","brutalist-purple","brutalist-orange","brutalist-pink"
+  "bento","brutalist","mono","blueprint","mono-red","mono-blue","mono-green","mono-purple","bento-coral","bento-mint","bento-lavender","bento-ocean","bento-sunset","brutalist-blue","brutalist-green","brutalist-purple","brutalist-orange","brutalist-pink",
+  "smm-diamond", "smm-modern", "smm-engaging-lilac", "smm-engaging-ashgrey", "smm-engaging-black", "smm-engaging-blue", "smm-engaging-coral", "smm-engaging-orange", "smm-engaging-lime", "smm-engaging-violet", "smm-engaging-cyan", "smm-engaging-yellow", "smm-engaging-dark", "smm-engaging-green", "smm-engaging-red", "smm-eternity-navy", "smm-eternity-lilac", "smm-eternity-raspberry", "smm-eternity-coral", "smm-eternity-purple", "smm-eternity-lime", "smm-eternity-cyan", "smm-eternity-azure", "smm-eternity-pink", "smm-eternity-grey", "smm-asd-darker", "smm-asd-dark", "smm-asd-pro-red", "smm-asd-pro-blue", "smm-asd-readable", "smm-asd-united", "smm-asd-slate", "smm-asd-spin", "smm-asd-pro", "smm-asd-lumen", "smm-asd-sandstone", "smm-asd-paper", "smm-asd-private", "smm-asd-journal", "smm-asd-flatly", "smm-asd-solar", "smm-asd-yeti", "smm-asd-spacelab", "smm-asd-cosmo", "smm-asd-lightblue", "smm-asd-cerulean", "smm-asd-superhero", "smm-asd-luxury", "smm-asd-luxury-blue", "smm-asd-ipek", "smm-asd-panelingo", "smm-asd-honest", "smm-asd-jap", "smm-asd-agrzm", "smm-asd-elites"
 ];
 
 function getDefaultTheme() {
@@ -635,7 +634,7 @@ function updateThemeButtons() {
   });
 }
 function initThemes() {
-  // The editable default is controlled from index.html/djjdjdjd.html:
+  // The editable default is controlled from index.html/tracker.html:
   // <meta name="tracker-default-theme" content="mono">
   // Saved user selection still wins after the user manually changes theme.
   const saved = localStorage.getItem(THEME_KEY);

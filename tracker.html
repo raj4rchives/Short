@@ -20,8 +20,8 @@
       <div class="sub">Built to keep your JEE preparation consistent and on track.</div>
     </div>
     <div class="actions">
-      <button class="secondary top-menu-btn" id="topMenuBtn" type="button" onclick="location.href='menu.html'"><span class="top-btn-icon">☰</span><span class="top-btn-label">Menu</span></button>
-      <button class="secondary top-theme-btn" id="topThemeBtn" type="button" onclick="location.href='themes.html'"><span class="top-btn-icon">🎨</span><span class="top-btn-label">Themes</span></button>
+      <button class="secondary top-menu-btn" id="topMenuBtn" type="button" onclick="openFeature('menu')"><span class="top-btn-icon">☰</span><span class="top-btn-label">Menu</span></button>
+      <button class="secondary top-theme-btn" id="topThemeBtn" type="button" onclick="openFeature('themes')"><span class="top-btn-icon">🎨</span><span class="top-btn-label">Themes</span></button>
       <button class="secondary" id="saveBtn">Save</button>
       <button class="secondary" id="loadBtn">Load</button>
       <button class="danger" id="clearBtn">Clear</button>
@@ -57,29 +57,29 @@
       </div>
 
       <div id="menuView" class="feature-view">
-        <button class="menu-feature-btn" data-page="syllabus.html" onclick="location.href='syllabus.html'">
+        <button class="menu-feature-btn" data-open-feature="syllabus">
           <span>➔</span><div><b>Syllabus Tracker</b><small>Add chapter + total lectures → print A4 tracker</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="pyq.html" onclick="location.href='pyq.html'">
+        <button class="menu-feature-btn" data-open-feature="pyq">
           <span>➔
           </span><div><b>PYQ Question Tracker</b><small>Chapter-wise 10-question blocks + revision ticks</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="backup.html" onclick="location.href='backup.html'">
+        <button class="menu-feature-btn" data-open-feature="backup">
           <span>➔
           </span><div><b>Backup & Import</b><small>Export all tracker data to JSON or restore it later</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="themes.html" onclick="location.href='themes.html'">
+        <button class="menu-feature-btn" data-open-feature="themes">
           <span>➔
-          </span><div><b>Themes</b><small>62 visual themes — different layouts, not just colours</small></div>
+          </span><div><b>Themes</b><small>8 visual themes — different layouts and colour variants</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="todo.html" onclick="location.href='todo.html'">
+        <button class="menu-feature-btn" data-open-feature="todo">
           <span>➔
           </span><div><b>Daily TODO</b><small>Date-wise tasks + PDF + analysis</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="focus.html" onclick="location.href='focus.html'">
+        <button class="menu-feature-btn" data-open-feature="focus">
           <span>➔</span><div><b>Focus Mode</b><small>Manual focus time + study logs + analysis</small></div>
         </button>
-        <button class="menu-feature-btn" data-page="weekly.html" onclick="location.href='weekly.html'">
+        <button class="menu-feature-btn" data-open-feature="weekly">
           <span>➔</span><div><b>Weekly Report</b><small>Questions • Lectures • Focus time chart</small></div>
         </button>
       </div>
@@ -140,6 +140,78 @@
           <button class="theme-option" data-theme="brutalist"><span class="theme-dot theme-brutalist"></span><b>Brutalist</b></button>
           <button class="theme-option" data-theme="mono"><span class="theme-dot theme-mono"></span><b>Mono</b></button>
           <button class="theme-option" data-theme="blueprint"><span class="theme-dot theme-blueprint"></span><b>Blueprint</b></button>
+          <button class="theme-option" data-theme="mono-red"><span class="theme-dot theme-mono-red"></span><b>Mono Red</b></button>
+          <button class="theme-option" data-theme="mono-blue"><span class="theme-dot theme-mono-blue"></span><b>Mono Blue</b></button>
+          <button class="theme-option" data-theme="mono-green"><span class="theme-dot theme-mono-green"></span><b>Mono Green</b></button>
+          <button class="theme-option" data-theme="mono-purple"><span class="theme-dot theme-mono-purple"></span><b>Mono Purple</b></button>
+          <button class="theme-option" data-theme="bento-coral"><span class="theme-dot theme-bento-coral"></span><b>Bento Coral</b></button>
+          <button class="theme-option" data-theme="bento-mint"><span class="theme-dot theme-bento-mint"></span><b>Bento Mint</b></button>
+          <button class="theme-option" data-theme="bento-lavender"><span class="theme-dot theme-bento-lavender"></span><b>Bento Lavender</b></button>
+          <button class="theme-option" data-theme="bento-ocean"><span class="theme-dot theme-bento-ocean"></span><b>Bento Ocean</b></button>
+          <button class="theme-option" data-theme="bento-sunset"><span class="theme-dot theme-bento-sunset"></span><b>Bento Sunset</b></button>
+          <button class="theme-option" data-theme="brutalist-blue"><span class="theme-dot theme-brutalist-blue"></span><b>Brutalist Blue</b></button>
+          <button class="theme-option" data-theme="brutalist-green"><span class="theme-dot theme-brutalist-green"></span><b>Brutalist Green</b></button>
+          <button class="theme-option" data-theme="brutalist-purple"><span class="theme-dot theme-brutalist-purple"></span><b>Brutalist Purple</b></button>
+          <button class="theme-option" data-theme="brutalist-orange"><span class="theme-dot theme-brutalist-orange"></span><b>Brutalist Orange</b></button>
+          <button class="theme-option" data-theme="brutalist-pink"><span class="theme-dot theme-brutalist-pink"></span><b>Brutalist Pink</b></button>
+        </div>
+        <div class="smm-theme-heading">SMM Panel Themes</div>
+        <div class="theme-grid theme-grid-48 smm-theme-grid">
+          <button class="theme-option" data-theme="smm-diamond"><span class="theme-dot smm-dot" style="--dot:#0e1f95"></span><b>SMM · Diamond</b></button>
+          <button class="theme-option" data-theme="smm-modern"><span class="theme-dot smm-dot" style="--dot:#269c23"></span><b>SMM · Modern</b></button>
+          <button class="theme-option" data-theme="smm-engaging-lilac"><span class="theme-dot smm-dot" style="--dot:#3f9cd5"></span><b>SMM · Engaging · Lilac</b></button>
+          <button class="theme-option" data-theme="smm-engaging-ashgrey"><span class="theme-dot smm-dot" style="--dot:#3f4c6b"></span><b>SMM · Engaging · Ashgrey</b></button>
+          <button class="theme-option" data-theme="smm-engaging-black"><span class="theme-dot smm-dot" style="--dot:#efc846"></span><b>SMM · Engaging · Black</b></button>
+          <button class="theme-option" data-theme="smm-engaging-blue"><span class="theme-dot smm-dot" style="--dot:#008bff"></span><b>SMM · Engaging · Blue</b></button>
+          <button class="theme-option" data-theme="smm-engaging-coral"><span class="theme-dot smm-dot" style="--dot:#fecc29"></span><b>SMM · Engaging · Coral</b></button>
+          <button class="theme-option" data-theme="smm-engaging-orange"><span class="theme-dot smm-dot" style="--dot:#ff7959"></span><b>SMM · Engaging · Orange</b></button>
+          <button class="theme-option" data-theme="smm-engaging-lime"><span class="theme-dot smm-dot" style="--dot:#00ba34"></span><b>SMM · Engaging · Lime</b></button>
+          <button class="theme-option" data-theme="smm-engaging-violet"><span class="theme-dot smm-dot" style="--dot:#5e0aef"></span><b>SMM · Engaging · Violet</b></button>
+          <button class="theme-option" data-theme="smm-engaging-cyan"><span class="theme-dot smm-dot" style="--dot:#02afd0"></span><b>SMM · Engaging · Cyan</b></button>
+          <button class="theme-option" data-theme="smm-engaging-yellow"><span class="theme-dot smm-dot" style="--dot:#fecc29"></span><b>SMM · Engaging · Yellow</b></button>
+          <button class="theme-option" data-theme="smm-engaging-dark"><span class="theme-dot smm-dot" style="--dot:#efc846"></span><b>SMM · Engaging · Dark</b></button>
+          <button class="theme-option" data-theme="smm-engaging-green"><span class="theme-dot smm-dot" style="--dot:#3f9cd5"></span><b>SMM · Engaging · Green</b></button>
+          <button class="theme-option" data-theme="smm-engaging-red"><span class="theme-dot smm-dot" style="--dot:#d83346"></span><b>SMM · Engaging · Red</b></button>
+          <button class="theme-option" data-theme="smm-eternity-navy"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Navy</b></button>
+          <button class="theme-option" data-theme="smm-eternity-lilac"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Lilac</b></button>
+          <button class="theme-option" data-theme="smm-eternity-raspberry"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Raspberry</b></button>
+          <button class="theme-option" data-theme="smm-eternity-coral"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Coral</b></button>
+          <button class="theme-option" data-theme="smm-eternity-purple"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Purple</b></button>
+          <button class="theme-option" data-theme="smm-eternity-lime"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Lime</b></button>
+          <button class="theme-option" data-theme="smm-eternity-cyan"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Cyan</b></button>
+          <button class="theme-option" data-theme="smm-eternity-azure"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Azure</b></button>
+          <button class="theme-option" data-theme="smm-eternity-pink"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Pink</b></button>
+          <button class="theme-option" data-theme="smm-eternity-grey"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Grey</b></button>
+          <button class="theme-option" data-theme="smm-asd-darker"><span class="theme-dot smm-dot" style="--dot:#1d1d1d"></span><b>SMM · ASD · Darker</b></button>
+          <button class="theme-option" data-theme="smm-asd-dark"><span class="theme-dot smm-dot" style="--dot:#3B566E"></span><b>SMM · ASD · Dark</b></button>
+          <button class="theme-option" data-theme="smm-asd-pro-red"><span class="theme-dot smm-dot" style="--dot:#d83346"></span><b>SMM · ASD · Pro Red</b></button>
+          <button class="theme-option" data-theme="smm-asd-pro-blue"><span class="theme-dot smm-dot" style="--dot:#1E79E4"></span><b>SMM · ASD · Pro Blue</b></button>
+          <button class="theme-option" data-theme="smm-asd-readable"><span class="theme-dot smm-dot" style="--dot:#4582ec"></span><b>SMM · ASD · Readable</b></button>
+          <button class="theme-option" data-theme="smm-asd-united"><span class="theme-dot smm-dot" style="--dot:#e95420"></span><b>SMM · ASD · United</b></button>
+          <button class="theme-option" data-theme="smm-asd-slate"><span class="theme-dot smm-dot" style="--dot:#3a3f44"></span><b>SMM · ASD · Slate</b></button>
+          <button class="theme-option" data-theme="smm-asd-spin"><span class="theme-dot smm-dot" style="--dot:#2c97de"></span><b>SMM · ASD · Spin</b></button>
+          <button class="theme-option" data-theme="smm-asd-pro"><span class="theme-dot smm-dot" style="--dot:#ff8355"></span><b>SMM · ASD · Pro</b></button>
+          <button class="theme-option" data-theme="smm-asd-lumen"><span class="theme-dot smm-dot" style="--dot:#eeeeee"></span><b>SMM · ASD · Lumen</b></button>
+          <button class="theme-option" data-theme="smm-asd-sandstone"><span class="theme-dot smm-dot" style="--dot:#93c54b"></span><b>SMM · ASD · Sandstone</b></button>
+          <button class="theme-option" data-theme="smm-asd-paper"><span class="theme-dot smm-dot" style="--dot:#2196f3"></span><b>SMM · ASD · Paper</b></button>
+          <button class="theme-option" data-theme="smm-asd-private"><span class="theme-dot smm-dot" style="--dot:#337ab7"></span><b>SMM · ASD · Private</b></button>
+          <button class="theme-option" data-theme="smm-asd-journal"><span class="theme-dot smm-dot" style="--dot:#eb6864"></span><b>SMM · ASD · Journal</b></button>
+          <button class="theme-option" data-theme="smm-asd-flatly"><span class="theme-dot smm-dot" style="--dot:#00bc8c"></span><b>SMM · ASD · Flatly</b></button>
+          <button class="theme-option" data-theme="smm-asd-solar"><span class="theme-dot smm-dot" style="--dot:#2aa198"></span><b>SMM · ASD · Solar</b></button>
+          <button class="theme-option" data-theme="smm-asd-yeti"><span class="theme-dot smm-dot" style="--dot:#008cba"></span><b>SMM · ASD · Yeti</b></button>
+          <button class="theme-option" data-theme="smm-asd-spacelab"><span class="theme-dot smm-dot" style="--dot:#3399f3"></span><b>SMM · ASD · Spacelab</b></button>
+          <button class="theme-option" data-theme="smm-asd-cosmo"><span class="theme-dot smm-dot" style="--dot:#2780e3"></span><b>SMM · ASD · Cosmo</b></button>
+          <button class="theme-option" data-theme="smm-asd-lightblue"><span class="theme-dot smm-dot" style="--dot:#4e85bd"></span><b>SMM · ASD · Lightblue</b></button>
+          <button class="theme-option" data-theme="smm-asd-cerulean"><span class="theme-dot smm-dot" style="--dot:#2fa4e7"></span><b>SMM · ASD · Cerulean</b></button>
+          <button class="theme-option" data-theme="smm-asd-superhero"><span class="theme-dot smm-dot" style="--dot:#df691a"></span><b>SMM · ASD · Superhero</b></button>
+          <button class="theme-option" data-theme="smm-asd-luxury"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · ASD · Luxury</b></button>
+          <button class="theme-option" data-theme="smm-asd-luxury-blue"><span class="theme-dot smm-dot" style="--dot:#007bff"></span><b>SMM · ASD · Luxury Blue</b></button>
+          <button class="theme-option" data-theme="smm-asd-ipek"><span class="theme-dot smm-dot" style="--dot:#8c1aff"></span><b>SMM · ASD · Ipek</b></button>
+          <button class="theme-option" data-theme="smm-asd-panelingo"><span class="theme-dot smm-dot" style="--dot:#1d1d1d"></span><b>SMM · ASD · Panelingo</b></button>
+          <button class="theme-option" data-theme="smm-asd-honest"><span class="theme-dot smm-dot" style="--dot:#fbca65"></span><b>SMM · ASD · Honest</b></button>
+          <button class="theme-option" data-theme="smm-asd-jap"><span class="theme-dot smm-dot" style="--dot:#ffcc1b"></span><b>SMM · ASD · Jap</b></button>
+          <button class="theme-option" data-theme="smm-asd-agrzm"><span class="theme-dot smm-dot" style="--dot:#8775a7"></span><b>SMM · ASD · Agrzm</b></button>
+          <button class="theme-option" data-theme="smm-asd-elites"><span class="theme-dot smm-dot" style="--dot:#80D651"></span><b>SMM · ASD · Elites</b></button>
         </div>
       </div>
 

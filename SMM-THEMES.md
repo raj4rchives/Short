@@ -1,0 +1,1 @@
+Integrated 55 SMM theme variants into the Theme Studio. Original theme CSS is preserved in smm-original-css/.
