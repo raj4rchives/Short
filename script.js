@@ -70,14 +70,7 @@ function addRows(count = 15) {
 }
 
 function rowsData() {
-  if (!tbody) {
-    try {
-      const saved = JSON.parse(localStorage.getItem(KEY) || "null");
-      return saved && Array.isArray(saved.rows) ? saved.rows : [];
-    } catch (e) {
-      return [];
-    }
-  }
+  if (!tbody) return [];
   return [...tbody.querySelectorAll("tr")].map(tr => {
     const o = {};
     tr.querySelectorAll("input").forEach(i => o[i.dataset.f] = i.value);
@@ -617,7 +610,9 @@ function initFeatureMenu() {
 
 /* ---------- 62 themes ---------- */
 const THEMES = [
-  "bento","brutalist","mono","blueprint"
+  "bento","brutalist","mono","blueprint","mono-red","mono-blue","mono-green","mono-purple",
+  "bento-coral","bento-mint","bento-lavender","bento-ocean","bento-sunset",
+  "brutalist-blue","brutalist-green","brutalist-purple","brutalist-orange","brutalist-pink"
 ];
 
 function getDefaultTheme() {
@@ -640,7 +635,7 @@ function updateThemeButtons() {
   });
 }
 function initThemes() {
-  // The editable default is controlled from index.html/tracker.html:
+  // The editable default is controlled from index.html/djjdjdjd.html:
   // <meta name="tracker-default-theme" content="mono">
   // Saved user selection still wins after the user manually changes theme.
   const saved = localStorage.getItem(THEME_KEY);
@@ -832,7 +827,7 @@ function renderFocus(){
         <div class="todo-item-title">${escapeFeatureText(x.subject)} · ${escapeFeatureText(x.activity)} · ${formatMinutes(x.minutes)}</div>
         <div class="todo-item-meta"><span class="todo-tag">${x.questions||0} questions</span><span>${escapeFeatureText(x.note||"")}</span></div>
       </div>
-      <button class="todo-delete" data-focus-delete="${x.id}">🗑️</button>
+      <button class="todo-delete" data-focus-delete="${x.id}">✖</button>
     </div>`).join("");
   list.querySelectorAll("[data-focus-delete]").forEach(btn=>btn.addEventListener("click",()=>{
     saveFocusLogs(getFocusLogs().filter(x=>String(x.id)!==String(btn.dataset.focusDelete)));renderFocus();

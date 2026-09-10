@@ -1,5 +1,5 @@
 *{box-sizing:border-box}
-:root{--bg:#090d18;--panel:#111827;--line:#263247;--text:#f5f7fb;--muted:#9aa7ba;--accent:#ffd900;--accent2:#ffb800}
+:root{--bg:#090d18;--panel:#111827;--line:#263247;--text:#f5f7fb;--muted:#9aa7ba;--accent:#ffd900;--accent2:#ffb800;--stat-bg:#0d1422;--badge-bg:#202c3e;--button-bg:#1b2638;--todo-bg:#111827;--danger-text:#ff8f9f}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 .wrap{max-width:1500px;margin:auto;padding:20px}
 .top{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:18px}
@@ -214,7 +214,7 @@ body{
   padding:11px 12px;
   border:1px solid var(--line);
   border-radius:12px;
-  background:var(--todo-bg,#0d1422);
+  background:var(--todo-bg,var(--panel));
 }
 .todo-item.done{opacity:.65}
 .todo-check{
@@ -836,6 +836,10 @@ body[data-theme] .menu-feature-btn,body[data-theme] .focus-controls{background:v
 
 
 .theme-blueprint{background:linear-gradient(135deg,#0ea5e9,#082f49)}
+.theme-mono-red{background:linear-gradient(135deg,#2a0f12,#f43f5e)}
+.theme-mono-blue{background:linear-gradient(135deg,#0f172a,#2563eb)}
+.theme-mono-green{background:linear-gradient(135deg,#0f2419,#16a34a)}
+.theme-mono-purple{background:linear-gradient(135deg,#21152f,#9333ea)}
 
 
 
@@ -844,13 +848,13 @@ body[data-theme] .menu-feature-btn,body[data-theme] .focus-controls{background:v
 
 
 
-body[data-theme="bento"]{--bg:#f1f5f9;--panel:#fff;--line:#111827;--text:#111827;--muted:#475569;--accent:#f59e0b;--stat-bg:#f8fafc;--badge-bg:#fef3c7;--button-bg:#fff}
+body[data-theme="bento"]{--bg:#f1f5f9;--panel:#fff;--line:#111827;--text:#111827;--muted:#475569;--accent:#f59e0b;--stat-bg:#f8fafc;--badge-bg:#fef3c7;--button-bg:#fff;--todo-bg:#fff;--danger-text:#dc2626}
 body[data-theme="bento"] .wrap{max-width:1320px}
 body[data-theme="bento"] .card,body[data-theme="bento"] .stat,body[data-theme="bento"] .countdown-card,body[data-theme="bento"] .dashboard-card{border:2px solid #111827;border-radius:8px;box-shadow:6px 6px 0 #111827}
 body[data-theme="bento"] .top{border-bottom:3px solid #111827;padding-bottom:16px}
 body[data-theme="bento"] .primary{border:2px solid #111827!important;box-shadow:3px 3px 0 #111827}
 
-body[data-theme="brutalist"]{--bg:#f4f4f0;--panel:#fff;--line:#111;--text:#111;--muted:#444;--accent:#ff3b30;--stat-bg:#f4e900;--badge-bg:#fff;--button-bg:#fff}
+body[data-theme="brutalist"]{--bg:#f4f4f0;--panel:#fff;--line:#111;--text:#111;--muted:#444;--accent:#ff3b30;--stat-bg:#f4e900;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#dc2626}
 body[data-theme="brutalist"] .wrap{max-width:1280px}
 body[data-theme="brutalist"] .card,body[data-theme="brutalist"] .stat,body[data-theme="brutalist"] .countdown-card,body[data-theme="brutalist"] .dashboard-card,body[data-theme="brutalist"] .feature-page{border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111}
 body[data-theme="brutalist"] button{border:2px solid #111;border-radius:0;box-shadow:3px 3px 0 #111}
@@ -872,7 +876,7 @@ body[data-theme="brutalist"] h1{font-weight:1000;text-transform:uppercase}
 
 
 
-body[data-theme="mono"]{--bg:#e5e5e5;--panel:#f7f7f7;--line:#222;--text:#111;--muted:#555;--accent:#111;--stat-bg:#fff;--badge-bg:#ddd;--button-bg:#fff}
+body[data-theme="mono"]{--bg:#e5e5e5;--panel:#f7f7f7;--line:#222;--text:#111;--muted:#555;--accent:#111;--stat-bg:#fff;--badge-bg:#ddd;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c}
 body[data-theme="mono"] .wrap{max-width:1100px}
 body[data-theme="mono"] .card,body[data-theme="mono"] .stat,body[data-theme="mono"] .countdown-card,body[data-theme="mono"] .dashboard-card{border:1px solid #111;border-radius:0}
 body[data-theme="mono"] button{border-radius:0;border:1px solid #111}
@@ -895,10 +899,24 @@ body[data-theme="mono"] .primary{background:#111!important;color:#fff!important}
 
 
 
-body[data-theme="blueprint"]{--bg:#082f49;--panel:#0b4164;--line:#4cc9f0;--text:#e0f2fe;--muted:#93c5fd;--accent:#67e8f9;--stat-bg:#0d4d73;--badge-bg:#125d87;--button-bg:#0d4d73}
+body[data-theme="blueprint"]{--bg:#082f49;--panel:#0b4164;--line:#4cc9f0;--text:#e0f2fe;--muted:#93c5fd;--accent:#67e8f9;--stat-bg:#0d4d73;--badge-bg:#125d87;--button-bg:#0d4d73;--todo-bg:#0d4d73;--danger-text:#fecdd3}
 body[data-theme="blueprint"]{background-color:#082f49;background-image:linear-gradient(rgba(103,232,249,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(103,232,249,.08) 1px,transparent 1px);background-size:24px 24px}
 body[data-theme="blueprint"] .card,body[data-theme="blueprint"] .stat,body[data-theme="blueprint"] .countdown-card,body[data-theme="blueprint"] .dashboard-card,body[data-theme="blueprint"] .feature-page{border:1px solid #4cc9f0;border-radius:2px;box-shadow:none}
 body[data-theme="blueprint"] button{border-radius:2px}
+
+/* ===== MONO COLOR VARIANTS ===== */
+body[data-theme="mono-red"]{--bg:#f5eeee;--panel:#fffafa;--line:#3f2024;--text:#1f1113;--muted:#76565b;--accent:#d92d4f;--stat-bg:#fff1f3;--badge-bg:#f9d9df;--button-bg:#fff;--todo-bg:#fffafa;--danger-text:#b4233f}
+body[data-theme="mono-red"] .card,body[data-theme="mono-red"] .stat,body[data-theme="mono-red"] .countdown-card,body[data-theme="mono-red"] .dashboard-card{border-color:#3f2024}
+body[data-theme="mono-red"] .primary{color:#fff!important}
+body[data-theme="mono-blue"]{--bg:#edf3fb;--panel:#fbfdff;--line:#183153;--text:#0f1f38;--muted:#526b8d;--accent:#2563eb;--stat-bg:#eaf1ff;--badge-bg:#d9e6ff;--button-bg:#fff;--todo-bg:#fbfdff;--danger-text:#b4233f}
+body[data-theme="mono-blue"] .card,body[data-theme="mono-blue"] .stat,body[data-theme="mono-blue"] .countdown-card,body[data-theme="mono-blue"] .dashboard-card{border-color:#183153}
+body[data-theme="mono-blue"] .primary{color:#fff!important}
+body[data-theme="mono-green"]{--bg:#edf7f0;--panel:#fbfffc;--line:#183b25;--text:#102217;--muted:#52705d;--accent:#16834b;--stat-bg:#e7f6ed;--badge-bg:#d3eddd;--button-bg:#fff;--todo-bg:#fbfffc;--danger-text:#b4233f}
+body[data-theme="mono-green"] .card,body[data-theme="mono-green"] .stat,body[data-theme="mono-green"] .countdown-card,body[data-theme="mono-green"] .dashboard-card{border-color:#183b25}
+body[data-theme="mono-green"] .primary{color:#fff!important}
+body[data-theme="mono-purple"]{--bg:#f3eef8;--panel:#fcfaff;--line:#352044;--text:#1d1227;--muted:#705d7d;--accent:#7c3aed;--stat-bg:#f0e7fb;--badge-bg:#e2d3f5;--button-bg:#fff;--todo-bg:#fcfaff;--danger-text:#b4233f}
+body[data-theme="mono-purple"] .card,body[data-theme="mono-purple"] .stat,body[data-theme="mono-purple"] .countdown-card,body[data-theme="mono-purple"] .dashboard-card{border-color:#352044}
+body[data-theme="mono-purple"] .primary{color:#fff!important}
 
 
 
@@ -929,18 +947,179 @@ body[data-theme="blueprint"] button{border-radius:2px}
   
 }
 
-/* ===== Separate feature pages ===== */
-.feature-standalone{min-height:100vh;padding:18px;background:var(--bg);color:var(--text)}
-.feature-shell{max-width:1200px;margin:0 auto}
-.feature-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.feature-nav .nav-links{display:flex;gap:8px;flex-wrap:wrap}
-.feature-page-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
-.feature-page-title{margin:0;font-size:30px}
-.feature-page-sub{color:var(--muted);margin:6px 0 20px}
-.feature-back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:#1b2638;color:#fff;border-radius:10px;padding:10px 14px;font-weight:800}
-.feature-home{display:inline-flex;align-items:center;gap:6px;text-decoration:none;background:var(--accent);color:#111;border-radius:10px;padding:10px 14px;font-weight:800}
-.standalone-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.standalone-menu a{display:flex;gap:12px;align-items:center;padding:18px;background:#0d1422;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--text)}
-.standalone-menu a:hover{border-color:var(--accent)}
-.standalone-menu b{display:block}.standalone-menu small{display:block;color:var(--muted);margin-top:4px}
-@media(max-width:700px){.feature-standalone{padding:10px}.feature-nav{align-items:flex-start;flex-direction:column}.standalone-menu{grid-template-columns:1fr}.feature-page-title{font-size:24px}}
+/* =========================================================
+   THEME-SAFE COMPONENT OVERRIDES
+   Keep ALL tracker feature pages consistent with the active theme.
+   Prevents old hard-coded dark backgrounds from appearing after
+   adding TODO, Focus, PYQ, Syllabus, Weekly and Backup data.
+   ========================================================= */
+body[data-theme] .card,
+body[data-theme] .dashboard-card,
+body[data-theme] .stat,
+body[data-theme] .countdown-card,
+body[data-theme] .feature-page,
+body[data-theme] .focus-controls,
+body[data-theme] .manual-focus-card,
+body[data-theme] .todo-stat,
+body[data-theme] .focus-hero-badge,
+body[data-theme] .menu-feature-btn {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] .todo-item,
+body[data-theme] .focus-item {
+  background: var(--todo-bg, var(--panel)) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] input,
+body[data-theme] select,
+body[data-theme] textarea,
+body[data-theme] .todo-form select,
+body[data-theme] .focus-fields input,
+body[data-theme] .focus-fields select {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] input::placeholder,
+body[data-theme] textarea::placeholder {
+  color: var(--muted) !important;
+}
+
+body[data-theme] .secondary,
+body[data-theme] .file-btn,
+body[data-theme] .focus-chip {
+  background: var(--badge-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] .danger {
+  background: var(--badge-bg) !important;
+  color: var(--danger-text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] .badge,
+body[data-theme] .todo-tag {
+  background: var(--badge-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] .table-wrap,
+body[data-theme] table {
+  background: var(--panel) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] th {
+  background: var(--badge-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] td {
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+body[data-theme] tr,
+body[data-theme] tr:nth-child(even) {
+  background: var(--panel) !important;
+}
+
+body[data-theme] .summary-table .total-row,
+body[data-theme] .summary-table .total-row td {
+  background: var(--badge-bg) !important;
+  color: var(--text) !important;
+}
+
+body[data-theme] .sub,
+body[data-theme] .note,
+body[data-theme] .countdown-label,
+body[data-theme] .countdown-sub,
+body[data-theme] .todo-stat span,
+body[data-theme] .todo-item-meta,
+body[data-theme] .focus-hero p,
+body[data-theme] .focus-hero-badge span {
+  color: var(--muted) !important;
+}
+
+/* Keep primary controls readable in every colour variant. */
+body[data-theme] .primary {
+  background: var(--accent) !important;
+  color: var(--accent-text, #fff) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Mono variants use dark text on the page and a coloured primary button. */
+body[data-theme="mono-red"] { --accent-text:#fff; }
+body[data-theme="mono-blue"] { --accent-text:#fff; }
+body[data-theme="mono-green"] { --accent-text:#fff; }
+body[data-theme="mono-purple"] { --accent-text:#fff; }
+body[data-theme="mono"] { --accent-text:#fff; }
+body[data-theme="bento"] { --accent-text:#111; }
+body[data-theme="brutalist"] { --accent-text:#fff; }
+body[data-theme="blueprint"] { --accent-text:#082f49; }
+
+/* Date/task/focus controls must never fall back to the old #0b1220/#1b2638 colors. */
+body[data-theme] .todo-toolbar button,
+body[data-theme] .todo-add-btn,
+body[data-theme] .focus-buttons button,
+body[data-theme] .focus-presets button,
+body[data-theme] .feature-close {
+  border-color: var(--line) !important;
+}
+
+/* Progress bars and focus visuals follow the selected accent. */
+body[data-theme] .progress-bar { background: var(--accent) !important; }
+body[data-theme] .focus-kicker { color: var(--accent) !important; }
+
+
+/* =========================================================
+   BENTO + BRUTALIST COLOR COLLECTION — 10 VARIANTS
+   Same structural styles as Bento/Brutalist, different palettes.
+   ========================================================= */
+.theme-bento-coral{background:linear-gradient(135deg,#3b1820,#fb7185)}
+.theme-bento-mint{background:linear-gradient(135deg,#12332b,#34d399)}
+.theme-bento-lavender{background:linear-gradient(135deg,#2a2144,#a78bfa)}
+.theme-bento-ocean{background:linear-gradient(135deg,#12304a,#38bdf8)}
+.theme-bento-sunset{background:linear-gradient(135deg,#4a2415,#fb923c)}
+.theme-brutalist-blue{background:linear-gradient(135deg,#172554,#3b82f6)}
+.theme-brutalist-green{background:linear-gradient(135deg,#14351f,#22c55e)}
+.theme-brutalist-purple{background:linear-gradient(135deg,#2e1065,#a855f7)}
+.theme-brutalist-orange{background:linear-gradient(135deg,#431407,#f97316)}
+.theme-brutalist-pink{background:linear-gradient(135deg,#500724,#ec4899)}
+
+/* Bento variants — rounded cards, offset shadows, airy surfaces */
+body[data-theme="bento-coral"]{--bg:#fff1f2;--panel:#fffafa;--line:#3b1820;--text:#251014;--muted:#76545c;--accent:#fb7185;--stat-bg:#fff7f8;--badge-bg:#ffe0e5;--button-bg:#fff;--todo-bg:#fffafa;--danger-text:#be123c;--accent-text:#fff}
+body[data-theme="bento-mint"]{--bg:#ecfdf5;--panel:#fbfffd;--line:#12332b;--text:#10231d;--muted:#4f7166;--accent:#10b981;--stat-bg:#f2fcf7;--badge-bg:#d1fae5;--button-bg:#fff;--todo-bg:#fbfffd;--danger-text:#be123c;--accent-text:#fff}
+body[data-theme="bento-lavender"]{--bg:#f5f3ff;--panel:#fdfcff;--line:#2a2144;--text:#1e1630;--muted:#685c7d;--accent:#8b5cf6;--stat-bg:#faf8ff;--badge-bg:#e9ddff;--button-bg:#fff;--todo-bg:#fdfcff;--danger-text:#be123c;--accent-text:#fff}
+body[data-theme="bento-ocean"]{--bg:#eff9ff;--panel:#fbfeff;--line:#12304a;--text:#102238;--muted:#52718a;--accent:#0ea5e9;--stat-bg:#f3faff;--badge-bg:#d9f1ff;--button-bg:#fff;--todo-bg:#fbfeff;--danger-text:#be123c;--accent-text:#fff}
+body[data-theme="bento-sunset"]{--bg:#fff7ed;--panel:#fffdf9;--line:#4a2415;--text:#29150c;--muted:#7b5c4c;--accent:#f97316;--stat-bg:#fffaf4;--badge-bg:#ffdfc7;--button-bg:#fff;--todo-bg:#fffdf9;--danger-text:#be123c;--accent-text:#fff}
+
+body[data-theme="bento-coral"] .card,body[data-theme="bento-coral"] .stat,body[data-theme="bento-coral"] .countdown-card,body[data-theme="bento-coral"] .dashboard-card,body[data-theme="bento-coral"] .feature-page,
+body[data-theme="bento-mint"] .card,body[data-theme="bento-mint"] .stat,body[data-theme="bento-mint"] .countdown-card,body[data-theme="bento-mint"] .dashboard-card,body[data-theme="bento-mint"] .feature-page,
+body[data-theme="bento-lavender"] .card,body[data-theme="bento-lavender"] .stat,body[data-theme="bento-lavender"] .countdown-card,body[data-theme="bento-lavender"] .dashboard-card,body[data-theme="bento-lavender"] .feature-page,
+body[data-theme="bento-ocean"] .card,body[data-theme="bento-ocean"] .stat,body[data-theme="bento-ocean"] .countdown-card,body[data-theme="bento-ocean"] .dashboard-card,body[data-theme="bento-ocean"] .feature-page,
+body[data-theme="bento-sunset"] .card,body[data-theme="bento-sunset"] .stat,body[data-theme="bento-sunset"] .countdown-card,body[data-theme="bento-sunset"] .dashboard-card,body[data-theme="bento-sunset"] .feature-page{border:2px solid var(--line);border-radius:8px;box-shadow:6px 6px 0 var(--line)}
+body[data-theme="bento-coral"] .top,body[data-theme="bento-mint"] .top,body[data-theme="bento-lavender"] .top,body[data-theme="bento-ocean"] .top,body[data-theme="bento-sunset"] .top{border-bottom:3px solid var(--line);padding-bottom:16px}
+body[data-theme="bento-coral"] .primary,body[data-theme="bento-mint"] .primary,body[data-theme="bento-lavender"] .primary,body[data-theme="bento-ocean"] .primary,body[data-theme="bento-sunset"] .primary{border:2px solid var(--line)!important;box-shadow:3px 3px 0 var(--line);color:var(--accent-text)!important}
+
+/* Brutalist variants — hard edges, bold borders, strong colour blocks */
+body[data-theme="brutalist-blue"]{--bg:#eff6ff;--panel:#fff;--line:#172554;--text:#0f172a;--muted:#475569;--accent:#3b82f6;--stat-bg:#bfdbfe;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c;--accent-text:#fff}
+body[data-theme="brutalist-green"]{--bg:#f0fdf4;--panel:#fff;--line:#14351f;--text:#102217;--muted:#486052;--accent:#22c55e;--stat-bg:#bbf7d0;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c;--accent-text:#fff}
+body[data-theme="brutalist-purple"]{--bg:#faf5ff;--panel:#fff;--line:#2e1065;--text:#201034;--muted:#635174;--accent:#a855f7;--stat-bg:#e9d5ff;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c;--accent-text:#fff}
+body[data-theme="brutalist-orange"]{--bg:#fff7ed;--panel:#fff;--line:#431407;--text:#29150c;--muted:#6d5144;--accent:#f97316;--stat-bg:#fed7aa;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c;--accent-text:#fff}
+body[data-theme="brutalist-pink"]{--bg:#fff1f2;--panel:#fff;--line:#500724;--text:#2b0a19;--muted:#70445a;--accent:#ec4899;--stat-bg:#fbcfe8;--badge-bg:#fff;--button-bg:#fff;--todo-bg:#fff;--danger-text:#b91c1c;--accent-text:#fff}
+body[data-theme^="brutalist-"] .wrap{max-width:1280px}
+body[data-theme^="brutalist-"] .card,body[data-theme^="brutalist-"] .stat,body[data-theme^="brutalist-"] .countdown-card,body[data-theme^="brutalist-"] .dashboard-card,body[data-theme^="brutalist-"] .feature-page{border:3px solid var(--line);border-radius:0;box-shadow:8px 8px 0 var(--line)}
+body[data-theme^="brutalist-"] button{border:2px solid var(--line);border-radius:0;box-shadow:3px 3px 0 var(--line)}
+body[data-theme^="brutalist-"] input,body[data-theme^="brutalist-"] select,body[data-theme^="brutalist-"] textarea{border:2px solid var(--line);border-radius:0;background:#fff;color:var(--text)}
+body[data-theme^="brutalist-"] h1{font-weight:1000;text-transform:uppercase}
