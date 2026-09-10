@@ -135,7 +135,7 @@
 
       <div id="themesView" class="feature-view" hidden>
         <p class="note">Pick any theme. It is saved automatically. <b>Default theme is Mono (black & white).</b> To change the default, edit <code>&lt;meta name="tracker-default-theme" content="mono"&gt;</code> in this HTML file.</p>
-        <div class="theme-grid theme-grid-48" id="themeGrid">
+        <div class="theme-grid theme-grid-48 smm-theme-grid" id="themeGrid">
           <button class="theme-option" data-theme="bento"><span class="theme-dot theme-bento"></span><b>Bento</b></button>
           <button class="theme-option" data-theme="brutalist"><span class="theme-dot theme-brutalist"></span><b>Brutalist</b></button>
           <button class="theme-option" data-theme="mono"><span class="theme-dot theme-mono"></span><b>Mono</b></button>
@@ -154,64 +154,19 @@
           <button class="theme-option" data-theme="brutalist-purple"><span class="theme-dot theme-brutalist-purple"></span><b>Brutalist Purple</b></button>
           <button class="theme-option" data-theme="brutalist-orange"><span class="theme-dot theme-brutalist-orange"></span><b>Brutalist Orange</b></button>
           <button class="theme-option" data-theme="brutalist-pink"><span class="theme-dot theme-brutalist-pink"></span><b>Brutalist Pink</b></button>
-        </div>
-        <div class="smm-theme-heading">SMM Panel Themes</div>
-        <div class="theme-grid theme-grid-48 smm-theme-grid">
-          <button class="theme-option" data-theme="smm-diamond"><span class="theme-dot smm-dot" style="--dot:#0e1f95"></span><b>SMM · Diamond</b></button>
-          <button class="theme-option" data-theme="smm-modern"><span class="theme-dot smm-dot" style="--dot:#269c23"></span><b>SMM · Modern</b></button>
-          <button class="theme-option" data-theme="smm-engaging-lilac"><span class="theme-dot smm-dot" style="--dot:#3f9cd5"></span><b>SMM · Engaging · Lilac</b></button>
-          <button class="theme-option" data-theme="smm-engaging-ashgrey"><span class="theme-dot smm-dot" style="--dot:#3f4c6b"></span><b>SMM · Engaging · Ashgrey</b></button>
-          <button class="theme-option" data-theme="smm-engaging-black"><span class="theme-dot smm-dot" style="--dot:#efc846"></span><b>SMM · Engaging · Black</b></button>
-          <button class="theme-option" data-theme="smm-engaging-blue"><span class="theme-dot smm-dot" style="--dot:#008bff"></span><b>SMM · Engaging · Blue</b></button>
-          <button class="theme-option" data-theme="smm-engaging-coral"><span class="theme-dot smm-dot" style="--dot:#fecc29"></span><b>SMM · Engaging · Coral</b></button>
-          <button class="theme-option" data-theme="smm-engaging-orange"><span class="theme-dot smm-dot" style="--dot:#ff7959"></span><b>SMM · Engaging · Orange</b></button>
-          <button class="theme-option" data-theme="smm-engaging-lime"><span class="theme-dot smm-dot" style="--dot:#00ba34"></span><b>SMM · Engaging · Lime</b></button>
-          <button class="theme-option" data-theme="smm-engaging-violet"><span class="theme-dot smm-dot" style="--dot:#5e0aef"></span><b>SMM · Engaging · Violet</b></button>
-          <button class="theme-option" data-theme="smm-engaging-cyan"><span class="theme-dot smm-dot" style="--dot:#02afd0"></span><b>SMM · Engaging · Cyan</b></button>
-          <button class="theme-option" data-theme="smm-engaging-yellow"><span class="theme-dot smm-dot" style="--dot:#fecc29"></span><b>SMM · Engaging · Yellow</b></button>
-          <button class="theme-option" data-theme="smm-engaging-dark"><span class="theme-dot smm-dot" style="--dot:#efc846"></span><b>SMM · Engaging · Dark</b></button>
-          <button class="theme-option" data-theme="smm-engaging-green"><span class="theme-dot smm-dot" style="--dot:#3f9cd5"></span><b>SMM · Engaging · Green</b></button>
-          <button class="theme-option" data-theme="smm-engaging-red"><span class="theme-dot smm-dot" style="--dot:#d83346"></span><b>SMM · Engaging · Red</b></button>
-          <button class="theme-option" data-theme="smm-eternity-navy"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Navy</b></button>
-          <button class="theme-option" data-theme="smm-eternity-lilac"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Lilac</b></button>
-          <button class="theme-option" data-theme="smm-eternity-raspberry"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Raspberry</b></button>
-          <button class="theme-option" data-theme="smm-eternity-coral"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Coral</b></button>
-          <button class="theme-option" data-theme="smm-eternity-purple"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Purple</b></button>
-          <button class="theme-option" data-theme="smm-eternity-lime"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Lime</b></button>
-          <button class="theme-option" data-theme="smm-eternity-cyan"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Cyan</b></button>
-          <button class="theme-option" data-theme="smm-eternity-azure"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Azure</b></button>
-          <button class="theme-option" data-theme="smm-eternity-pink"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Pink</b></button>
-          <button class="theme-option" data-theme="smm-eternity-grey"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · Eternity · Grey</b></button>
-          <button class="theme-option" data-theme="smm-asd-darker"><span class="theme-dot smm-dot" style="--dot:#1d1d1d"></span><b>SMM · ASD · Darker</b></button>
-          <button class="theme-option" data-theme="smm-asd-dark"><span class="theme-dot smm-dot" style="--dot:#3B566E"></span><b>SMM · ASD · Dark</b></button>
-          <button class="theme-option" data-theme="smm-asd-pro-red"><span class="theme-dot smm-dot" style="--dot:#d83346"></span><b>SMM · ASD · Pro Red</b></button>
-          <button class="theme-option" data-theme="smm-asd-pro-blue"><span class="theme-dot smm-dot" style="--dot:#1E79E4"></span><b>SMM · ASD · Pro Blue</b></button>
-          <button class="theme-option" data-theme="smm-asd-readable"><span class="theme-dot smm-dot" style="--dot:#4582ec"></span><b>SMM · ASD · Readable</b></button>
-          <button class="theme-option" data-theme="smm-asd-united"><span class="theme-dot smm-dot" style="--dot:#e95420"></span><b>SMM · ASD · United</b></button>
-          <button class="theme-option" data-theme="smm-asd-slate"><span class="theme-dot smm-dot" style="--dot:#3a3f44"></span><b>SMM · ASD · Slate</b></button>
-          <button class="theme-option" data-theme="smm-asd-spin"><span class="theme-dot smm-dot" style="--dot:#2c97de"></span><b>SMM · ASD · Spin</b></button>
-          <button class="theme-option" data-theme="smm-asd-pro"><span class="theme-dot smm-dot" style="--dot:#ff8355"></span><b>SMM · ASD · Pro</b></button>
-          <button class="theme-option" data-theme="smm-asd-lumen"><span class="theme-dot smm-dot" style="--dot:#eeeeee"></span><b>SMM · ASD · Lumen</b></button>
-          <button class="theme-option" data-theme="smm-asd-sandstone"><span class="theme-dot smm-dot" style="--dot:#93c54b"></span><b>SMM · ASD · Sandstone</b></button>
-          <button class="theme-option" data-theme="smm-asd-paper"><span class="theme-dot smm-dot" style="--dot:#2196f3"></span><b>SMM · ASD · Paper</b></button>
-          <button class="theme-option" data-theme="smm-asd-private"><span class="theme-dot smm-dot" style="--dot:#337ab7"></span><b>SMM · ASD · Private</b></button>
-          <button class="theme-option" data-theme="smm-asd-journal"><span class="theme-dot smm-dot" style="--dot:#eb6864"></span><b>SMM · ASD · Journal</b></button>
-          <button class="theme-option" data-theme="smm-asd-flatly"><span class="theme-dot smm-dot" style="--dot:#00bc8c"></span><b>SMM · ASD · Flatly</b></button>
-          <button class="theme-option" data-theme="smm-asd-solar"><span class="theme-dot smm-dot" style="--dot:#2aa198"></span><b>SMM · ASD · Solar</b></button>
-          <button class="theme-option" data-theme="smm-asd-yeti"><span class="theme-dot smm-dot" style="--dot:#008cba"></span><b>SMM · ASD · Yeti</b></button>
-          <button class="theme-option" data-theme="smm-asd-spacelab"><span class="theme-dot smm-dot" style="--dot:#3399f3"></span><b>SMM · ASD · Spacelab</b></button>
-          <button class="theme-option" data-theme="smm-asd-cosmo"><span class="theme-dot smm-dot" style="--dot:#2780e3"></span><b>SMM · ASD · Cosmo</b></button>
-          <button class="theme-option" data-theme="smm-asd-lightblue"><span class="theme-dot smm-dot" style="--dot:#4e85bd"></span><b>SMM · ASD · Lightblue</b></button>
-          <button class="theme-option" data-theme="smm-asd-cerulean"><span class="theme-dot smm-dot" style="--dot:#2fa4e7"></span><b>SMM · ASD · Cerulean</b></button>
-          <button class="theme-option" data-theme="smm-asd-superhero"><span class="theme-dot smm-dot" style="--dot:#df691a"></span><b>SMM · ASD · Superhero</b></button>
-          <button class="theme-option" data-theme="smm-asd-luxury"><span class="theme-dot smm-dot" style="--dot:#052a36"></span><b>SMM · ASD · Luxury</b></button>
-          <button class="theme-option" data-theme="smm-asd-luxury-blue"><span class="theme-dot smm-dot" style="--dot:#007bff"></span><b>SMM · ASD · Luxury Blue</b></button>
-          <button class="theme-option" data-theme="smm-asd-ipek"><span class="theme-dot smm-dot" style="--dot:#8c1aff"></span><b>SMM · ASD · Ipek</b></button>
-          <button class="theme-option" data-theme="smm-asd-panelingo"><span class="theme-dot smm-dot" style="--dot:#1d1d1d"></span><b>SMM · ASD · Panelingo</b></button>
-          <button class="theme-option" data-theme="smm-asd-honest"><span class="theme-dot smm-dot" style="--dot:#fbca65"></span><b>SMM · ASD · Honest</b></button>
-          <button class="theme-option" data-theme="smm-asd-jap"><span class="theme-dot smm-dot" style="--dot:#ffcc1b"></span><b>SMM · ASD · Jap</b></button>
-          <button class="theme-option" data-theme="smm-asd-agrzm"><span class="theme-dot smm-dot" style="--dot:#8775a7"></span><b>SMM · ASD · Agrzm</b></button>
-          <button class="theme-option" data-theme="smm-asd-elites"><span class="theme-dot smm-dot" style="--dot:#80D651"></span><b>SMM · ASD · Elites</b></button>
+          <div class="theme-section-label">SMM Panel Collection</div>
+          <button class="theme-option" data-theme="smm-cheapest-purple"><span class="theme-dot theme-smm-cheapest-purple"></span><b>Cheapest Purple</b></button>
+          <button class="theme-option" data-theme="smm-reseller-dark"><span class="theme-dot theme-smm-reseller-dark"></span><b>Reseller Dark</b></button>
+          <button class="theme-option" data-theme="smm-provider-gold"><span class="theme-dot theme-smm-provider-gold"></span><b>Provider Gold</b></button>
+          <button class="theme-option" data-theme="smm-engaging-black"><span class="theme-dot theme-smm-engaging-black"></span><b>Engaging Black</b></button>
+          <button class="theme-option" data-theme="smm-engaging-blue"><span class="theme-dot theme-smm-engaging-blue"></span><b>Engaging Blue</b></button>
+          <button class="theme-option" data-theme="smm-engaging-orange"><span class="theme-dot theme-smm-engaging-orange"></span><b>Engaging Orange</b></button>
+          <button class="theme-option" data-theme="smm-eternity-navy"><span class="theme-dot theme-smm-eternity-navy"></span><b>Eternity Navy</b></button>
+          <button class="theme-option" data-theme="smm-eternity-lilac"><span class="theme-dot theme-smm-eternity-lilac"></span><b>Eternity Lilac</b></button>
+          <button class="theme-option" data-theme="smm-eternity-coral"><span class="theme-dot theme-smm-eternity-coral"></span><b>Eternity Coral</b></button>
+          <button class="theme-option" data-theme="smm-diamond"><span class="theme-dot theme-smm-diamond"></span><b>Diamond</b></button>
+          <button class="theme-option" data-theme="smm-superhero"><span class="theme-dot theme-smm-superhero"></span><b>Superhero</b></button>
+          <button class="theme-option" data-theme="smm-slate"><span class="theme-dot theme-smm-slate"></span><b>Slate</b></button>
         </div>
       </div>
 
