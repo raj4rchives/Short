@@ -1,143 +1,112 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#7c00ff">
-  <title>JEESAT WEBSITE — JEE & BITSAT Prep Hub</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ExamForge — CBT Test Builder</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><span class="brand-dark">JEE</span><span> SAT</span><small>PREP HUB</small></div>
-  <div class="top-actions">
-    <button class="pill">♡ <b id="xp">4</b></button>
-    <button class="pill fire">🔥 <b id="streak">0</b></button>
-    <button class="icon-btn" id="bellBtn" aria-label="Notifications">♧</button>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </div>
+<header class="top">
+  <a class="logo" href="#"><span>EXAM</span>FORGE <b>CBT</b></a>
+  <button id="theme" class="round">☾</button>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <div class="side-brand">jeesat<span>.website</span><button id="closeMenu">×</button></div>
-    <nav>
-      <a class="active" href="#home">▦ <span>Dashboard</span></a>
-      <a href="#notes">▤ <span>Formula & Short Notes</span></a>
-      <a href="#pyq">▣ <span>PYQ Vault</span></a>
-      <a href="#important">★ <span>Most Important</span></a>
-      <a href="#practice">⌁ <span>Practice</span></a>
-      <a href="#tools">⌘ <span>Exam Tools</span></a>
-    </nav>
-    <div class="side-bottom">
-      <a href="#support">♧ <span>Support</span></a>
-      <a href="#profile">R <span>My Profile</span></a>
+<main>
+<section id="builder" class="page active">
+  <div class="hero">
+    <div class="eyebrow">JEE · NEET · CUSTOM CBT</div>
+    <h1>Paper in.<br><strong>CBT test out.</strong></h1>
+    <p>Upload a question paper and solution PDF, configure your test, and turn it into a clean, time-bound computer-based exam.</p>
+  </div>
+
+  <div class="upload-grid">
+    <div class="card upload">
+      <div class="label">01 / QUESTION PAPER</div>
+      <label for="qpdf" class="drop">
+        <div class="drop-icon">↑</div><strong>Upload question PDF</strong>
+        <span id="qname">PDF • click to select</span>
+      </label>
+      <input id="qpdf" type="file" accept=".pdf,application/pdf">
     </div>
-  </aside>
-  <div class="scrim" id="scrim"></div>
+    <div class="card upload">
+      <div class="label">02 / SOLUTIONS</div>
+      <label for="spdf" class="drop">
+        <div class="drop-icon">+</div><strong>Upload solution PDF</strong>
+        <span id="sname">Optional • answer key / solutions</span>
+      </label>
+      <input id="spdf" type="file" accept=".pdf,application/pdf">
+    </div>
+  </div>
 
-  <main id="home">
-    <section class="hero">
-      <div>
-        <div class="eyebrow">JEESAT 2027 • SMART PREP</div>
-        <h1>Everything important.<br><span>Nothing unnecessary.</span></h1>
-        <p>Formula sheets, short notes, PYQ practice and high-value questions for JEE Main, JEE Advanced & BITSAT.</p>
-        <div class="hero-actions">
-          <a class="primary" href="#pyq">Open PYQ Vault →</a>
-          <a class="secondary" href="#notes">Quick Revision</a>
-        </div>
+  <div class="card settings">
+    <div class="label">03 / TEST CONFIGURATION</div>
+    <div class="fields">
+      <label>Test name<input id="name" value="My CBT Test"></label>
+      <label>Duration<input id="minutes" type="number" min="1" value="180"></label>
+      <label>Questions<input id="count" type="number" min="1" value="30"></label>
+      <label>Mode<select id="mode"><option value="exam">Exam mode</option><option value="practice">Practice mode</option></select></label>
+    </div>
+    <div class="hint">Best results: text-based PDFs with numbered questions and A/B/C/D options. Scanned/image PDFs may require OCR in a future backend version.</div>
+    <div class="actions"><button id="build" class="primary">Build CBT <span>→</span></button><button id="demo" class="ghost">Preview demo</button></div>
+    <div id="status"></div>
+  </div>
+</section>
+
+<section id="test" class="page">
+  <div class="exam-head">
+    <div><div class="mini">LIVE TEST</div><strong id="testName">CBT TEST</strong></div>
+    <div class="clock" id="clock">03:00:00</div>
+    <button id="submit" class="danger">Submit</button>
+  </div>
+  <div class="exam-grid">
+    <article class="card question">
+      <div class="qtop"><span id="qnum">Question 1</span><span id="subject">General</span></div>
+      <div id="qtext" class="qtext"></div>
+      <div id="options" class="options"></div>
+      <div id="solution" class="solution hidden"></div>
+      <div class="qactions">
+        <button id="prev" class="ghost">← Previous</button>
+        <button id="mark" class="ghost">⚑ Mark</button>
+        <button id="next" class="primary">Save & Next →</button>
       </div>
-      <div class="hero-orb">⚡<small>FAST<br>REVISION</small></div>
-    </section>
-
-    <section class="greeting">
-      <h2>Hello, Raj 👋</h2><p>Ready to crush today's target?</p>
-    </section>
-
-    <section class="stats">
-      <div><b id="doneCount">0</b><span>Questions solved</span></div>
-      <div><b>2020–26</b><span>PYQ coverage</span></div>
-      <div><b>PCM</b><span>All core subjects</span></div>
-      <div><b>2 min</b><span>Quick revision mode</span></div>
-    </section>
-
-    <section class="section" id="notes">
-      <div class="section-head"><h2>▤ Formula & Short Notes</h2><span>FREE</span></div>
-      <div class="filters">
-        <button class="filter active" data-subject="All">All</button>
-        <button class="filter" data-subject="Physics">Physics</button>
-        <button class="filter" data-subject="Chemistry">Chemistry</button>
-        <button class="filter" data-subject="Maths">Maths</button>
+    </article>
+    <aside class="card palette">
+      <div class="pal-head"><b>Question palette</b><span id="progress">0/0</span></div>
+      <div id="grid" class="grid"></div>
+      <div class="legend">
+        <span><i class="a"></i>Answered</span><span><i class="v"></i>Visited</span>
+        <span><i class="m"></i>Review</span><span><i></i>Unanswered</span>
       </div>
-      <div class="card-grid" id="notesGrid"></div>
-    </section>
+    </aside>
+  </div>
+</section>
 
-    <section class="section" id="pyq">
-      <div class="section-head"><h2>▣ PYQ Vault</h2><span class="badge-purple">2020 → 2026</span></div>
-      <div class="notice">Official papers are linked where available. Full copyrighted question text is not bundled into this starter site; use the official paper links or your own licensed question database.</div>
-      <div class="pyq-controls">
-        <select id="examFilter"><option>All Exams</option><option>JEE Main</option><option>JEE Advanced</option><option>BITSAT</option></select>
-        <select id="yearFilter"><option>All Years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option></select>
-        <input id="search" placeholder="Search chapter / topic…">
-      </div>
-      <div class="pyq-list" id="pyqList"></div>
-    </section>
+<section id="result" class="page">
+  <div class="result-hero">
+    <div class="eyebrow">TEST COMPLETE</div>
+    <h2 id="rtitle">Your performance</h2>
+    <div id="percent" class="percent">0%</div>
+    <p id="summary"></p>
+  </div>
+  <div id="stats" class="stats"></div>
+  <div class="card analytics">
+    <div class="label">PERFORMANCE ANALYSIS</div>
+    <div id="bars"></div>
+  </div>
+  <div class="card review">
+    <div class="label">QUESTION REVIEW</div>
+    <div id="review"></div>
+  </div>
+  <button id="again" class="primary wide">Create another test →</button>
+</section>
+</main>
 
-    <section class="section" id="important">
-      <div class="section-head"><h2>★ Most Important Questions</h2><span>HIGH VALUE</span></div>
-      <div class="question-card">
-        <div class="qtop"><span class="tag physics">PHYSICS</span><span>Priority A+</span></div>
-        <h3>Electrostatics — field/potential + capacitor combination</h3>
-        <p>Practice a mixed-concept problem requiring symmetry, equivalent capacitance and energy reasoning.</p>
-        <button class="solve" data-add="1">Mark solved ✓</button>
-      </div>
-      <div class="question-card">
-        <div class="qtop"><span class="tag chemistry">CHEMISTRY</span><span>Priority A+</span></div>
-        <h3>Equilibrium — Kp/Kc + degree of dissociation</h3>
-        <p>Focus on approximation, reaction quotient and conversion between Kp and Kc.</p>
-        <button class="solve" data-add="1">Mark solved ✓</button>
-      </div>
-      <div class="question-card">
-        <div class="qtop"><span class="tag maths">MATHS</span><span>Priority A+</span></div>
-        <h3>Calculus — definite integral with properties</h3>
-        <p>Train symmetry, interval transformation and standard definite-integral identities.</p>
-        <button class="solve" data-add="1">Mark solved ✓</button>
-      </div>
-    </section>
-
-    <section class="section" id="practice">
-      <div class="section-head"><h2>⌁ Smart Practice</h2><span>ADAPTIVE</span></div>
-      <div class="practice-grid">
-        <button class="practice-card" data-mode="Weak chapters"><b>🎯</b><strong>Weak Chapters</strong><small>Target your lowest accuracy.</small></button>
-        <button class="practice-card" data-mode="PYQ Sprint"><b>⚡</b><strong>PYQ Sprint</strong><small>20 questions • timed.</small></button>
-        <button class="practice-card" data-mode="Revision"><b>🧠</b><strong>2-Min Revision</strong><small>Rapid formula recall.</small></button>
-        <button class="practice-card" data-mode="Mixed PCM"><b>◉</b><strong>Mixed PCM</strong><small>Exam-style random set.</small></button>
-      </div>
-    </section>
-
-    <section class="section" id="tools">
-      <div class="section-head"><h2>⌘ Exam Tools</h2></div>
-      <div class="tool-grid">
-        <article><b>📊</b><h3>Score Predictor</h3><p>Enter marks to estimate percentile/range. Keep it as an estimate, not a guarantee.</p><button class="secondary" onclick="openTool('predictor')">Open →</button></article>
-        <article><b>⏱</b><h3>Focus Timer</h3><p>25/50/90-minute study sessions with a simple progress display.</p><button class="secondary" onclick="openTool('timer')">Start →</button></article>
-        <article><b>📚</b><h3>Digital Book</h3><p>Chapter-wise notes, formulas and your own saved questions in one place.</p><button class="secondary" onclick="openTool('book')">Open →</button></article>
-      </div>
-    </section>
-
-    <section class="premium">
-      <div><div class="eyebrow">JEESAT PRO</div><h2>Build your own revision engine.</h2><p>Bookmarks, custom question sets, detailed analytics and private notes.</p></div>
-      <button class="primary" id="premiumBtn">Explore Premium →</button>
-    </section>
-
-    <footer id="support"><b>JEESAT WEBSITE</b><span>Built for focused exam preparation • 2026</span></footer>
-  </main>
+<div id="confirm" class="modal hidden">
+ <div class="modal-box"><div class="modal-x" id="close">×</div><h3>Submit test?</h3><p>Your answers will be locked and the analysis will be generated.</p><div class="modal-actions"><button id="cancel" class="ghost">Cancel</button><button id="yes" class="danger">Submit test</button></div></div>
 </div>
 
-<div class="modal" id="modal"><div class="modal-box"><button class="modal-x" id="modalX">×</button><div id="modalContent"></div></div></div>
-<div class="toast" id="toast">Saved ✓</div>
-<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs" type="module"></script>
+<script src="script.js" type="module"></script>
 </body>
 </html>
