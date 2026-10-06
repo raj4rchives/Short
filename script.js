@@ -70,7 +70,7 @@ function buildPrintPages(){
       <div>
         <div class="eyebrow">YOUR DAILY PLAN · EXAMYTRACK</div>
         <h2>Days ${start}–${end} Checklist</h2>
-        <div class="pageLabel">Page ${p+1} of ${pages} · 20 days per A4 page</div>
+        <div class="pageLabel">Page ${p+1} of ${pages} · 15 days per A4 page</div>
       </div>
       <div class="progress">${document.getElementById('progress').textContent}</div>`;
     panel.appendChild(head);
@@ -209,7 +209,7 @@ $('clearSyllabus').onclick=()=>{
 };
 
 function syllabusPrintHTML(){
-  const perPage=22;
+  const perPage=15;
   let pages='';
   const groups={};
   syllabusData.forEach(x=>(groups[x.subject]??=[]).push(x));
@@ -243,27 +243,27 @@ $('downloadSyllabus').onclick=()=>{
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:#fff;color:#111}
     body{font-family:Arial,Helvetica,sans-serif}
-    .syPage{width:100%;page-break-after:always;break-after:page;padding:0}
+    .syPage{width:100%;page-break-after:always;break-after:page;padding:0
     .syPage:last-child{page-break-after:auto;break-after:auto}
     .syPageHeader{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4mm}
-    h1{font-size:17pt;margin:0 0 1mm;color:#111}
-    .sySub{font-size:8pt;color:#333}
-    .sySubject{font-size:12pt;font-weight:900;margin:3mm 0 1.5mm;text-transform:uppercase}
+    h1{font-size:19pt;margin:0 0 1mm;color:#111}
+    .sySub{font-size:9pt;color:#333}
+    .sySubject{font-size:14pt;font-weight:900;margin:2.5mm 0 1.5mm;text-transform:uppercase}
     table{width:100%;border-collapse:collapse;table-layout:fixed;color:#111}
     th,td{border:1px solid #111;text-align:center;vertical-align:middle}
-    th{font-size:6.6pt;height:8mm;background:#e9e9e9!important;padding:1mm .7mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    td{font-size:7pt;height:10mm;padding:1mm .6mm}
+    th{font-size:8pt;height:9mm;background:#e9e9e9!important;padding:1mm .7mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    td{font-size:9pt;height:11mm;padding:1mm .6mm}
     td:nth-child(1),th:nth-child(1){width:4%}
     td:nth-child(2),th:nth-child(2){width:17%;text-align:left}
     td:nth-child(3),th:nth-child(3){width:22%}
     td:nth-child(4),th:nth-child(4){width:5%}
     td:nth-child(n+5),th:nth-child(n+5){width:4.7%}
     td:nth-child(2){font-weight:700}
-    .lectureBoxes{display:flex;flex-wrap:wrap;gap:1.1mm;justify-content:flex-start;align-items:center}
-    .lectureItem{display:flex;align-items:center;gap:.7mm;white-space:nowrap}
-    .sq{width:3.3mm;height:3.3mm;border:1px solid #111;display:inline-block;box-sizing:border-box}
-    .tinySq{width:3.8mm;height:3.8mm;border:1px solid #111;display:inline-block}
-    @page{size:A4 landscape;margin:7mm}
+    .lectureBoxes{display:flex;flex-wrap:wrap;gap:1mm;justify-content:flex-start;align-items:center}
+    .lectureItem{display:flex;align-items:center;gap:.7mm;white-space:nowrap;font-size:8.5pt}
+    .sq{width:4mm;height:4mm;border:1px solid #111;display:inline-block;box-sizing:border-box}
+    .tinySq{width:4.2mm;height:4.2mm;border:1px solid #111;display:inline-block}
+    @page{size:A4 landscape;margin:5mm}
   `;
 
   const w=window.open('', '_blank');
