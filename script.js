@@ -1,102 +1,244 @@
-const $=s=>document.querySelector(s);
-const pages={builder:$("#builder"),test:$("#test"),result:$("#result")};
-let qs=[],ans=[],marks=[],seen=[],cur=0,left=0,timer=null,mode="exam";
+const $=id=>document.getElementById(id);
+const settings=['days','lectures','hw','dpp','pyq','questions','rev'];
+const storeKey='examytrack-v1';
+let state=JSON.parse(localStorage.getItem(storeKey)||'null')||{
+  settings:{days:20,lectures:4,hw:1,dpp:1,pyq:1,questions:30,rev:1},checks:{},theme:'dark'
+};
+settings.forEach(k=>$(k).value=state.settings[k]);
+document.body.dataset.theme=state.theme;
 
-const demo=[
-{text:"A particle moves with constant acceleration. Which quantity changes uniformly with time?",options:["Velocity","Displacement","Acceleration","Mass"],answer:0,solution:"With constant acceleration, velocity changes linearly with time.",subject:"Physics"},
-{text:"The value of sin²θ + cos²θ is:",options:["0","1","2","Depends on θ"],answer:1,solution:"The fundamental identity is sin²θ + cos²θ = 1.",subject:"Mathematics"},
-{text:"Which molecule has linear geometry?",options:["NH₃","H₂O","CO₂","CH₄"],answer:2,solution:"CO₂ has two electron domains around carbon, giving a linear geometry.",subject:"Chemistry"},
-{text:"The powerhouse of a eukaryotic cell is:",options:["Nucleus","Mitochondria","Ribosome","Golgi body"],answer:1,solution:"Mitochondria produce most cellular ATP through cellular respiration.",subject:"Biology"},
-{text:"If f(x)=x², then f'(3) equals:",options:["3","6","9","12"],answer:1,solution:"f'(x)=2x, so f'(3)=6.",subject:"Mathematics"},
-{text:"The SI unit of electric charge is:",options:["Volt","Ampere","Coulomb","Ohm"],answer:2,solution:"Electric charge is measured in coulombs (C).",subject:"Physics"}
+function save(){localStorage.setItem(storeKey,JSON.stringify(state));}
+function countBlocks(n){return Math.ceil(Number(n||0)/10)}
+function boxes(day,type,count){
+  const wrap=document.createElement('div'); wrap.className='checks';
+  for(let i=0;i<count;i++){
+    const b=document.createElement('button'); b.className='box';
+    const key=`${day}-${type}-${i}`;
+    if(state.checks[key]) b.classList.add('checked');
+    b.onclick=()=>{state.checks[key]=!state.checks[key];b.classList.toggle('checked');save();updateProgress()};
+    wrap.appendChild(b);
+  }
+  return wrap;
+}
+function render(){
+  const s=state.settings, t=$('tracker'); t.innerHTML='';
+  const head=t.insertRow(); ['DAY','LECTURES','HW / MODULE','DPP','PYQ','QUESTIONS (10 = 1 □)','REV'].forEach(x=>{const c=head.insertCell();c.outerHTML=`<th>${x}</th>`});
+  for(let d=1;d<=s.days;d++){
+    const r=t.insertRow(), c=r.insertCell();
+    c.innerHTML=`<span class="dayNum">DAY ${d}</span><span class="sub">JEE TRACK</span>`;
+    const vals=[['lec',s.lectures],['hw',s.hw],['dpp',s.dpp],['pyq',s.pyq],['q',countBlocks(s.questions)],['rev',s.rev]];
+    vals.forEach(([type,n])=>r.insertCell().appendChild(boxes(d,type,n)));
+  }
+  updateProgress();
+}
+function buildPrintPages(){
+  const root=document.getElementById('printPages');
+  root.innerHTML='';
+  const s=state.settings;
+  const pages=Math.ceil(s.days/20);
+
+  function makeTable(start,end){
+    const table=document.createElement('table');
+    const head=table.insertRow();
+    ['DAY','LECTURES','HW / MODULE','DPP','PYQ','QUESTIONS (10 = 1 □)','REV'].forEach(x=>{
+      const c=head.insertCell();
+      c.outerHTML=`<th>${x}</th>`;
+    });
+
+    for(let d=start;d<=end;d++){
+      const r=table.insertRow();
+      const c=r.insertCell();
+      c.innerHTML=`<span class="dayNum">DAY ${d}</span><span class="sub">JEE TRACK</span>`;
+      const vals=[['lec',s.lectures],['hw',s.hw],['dpp',s.dpp],['pyq',s.pyq],['q',countBlocks(s.questions)],['rev',s.rev]];
+      vals.forEach(([type,n])=>r.insertCell().appendChild(boxes(d,type,n)));
+    }
+    return table;
+  }
+
+  for(let p=0;p<pages;p++){
+    const start=p*20+1;
+    const end=Math.min((p+1)*20,s.days);
+    const page=document.createElement('div');
+    page.className='printPage';
+
+    const panel=document.createElement('section');
+    panel.className='panel';
+
+    const head=document.createElement('div');
+    head.className='trackerHead';
+    head.innerHTML=`
+      <div>
+        <div class="eyebrow">YOUR DAILY PLAN · EXAMYTRACK</div>
+        <h2>Days ${start}–${end} Checklist</h2>
+        <div class="pageLabel">Page ${p+1} of ${pages} · 20 days per A4 page</div>
+      </div>
+      <div class="progress">${document.getElementById('progress').textContent}</div>`;
+    panel.appendChild(head);
+
+    const wrap=document.createElement('div');
+    wrap.className='tableWrap';
+    wrap.appendChild(makeTable(start,end));
+    panel.appendChild(wrap);
+    page.appendChild(panel);
+    root.appendChild(page);
+  }
+}
+
+function updateProgress(){
+  const s=state.settings;
+  let total=s.days*(s.lectures+s.hw+s.dpp+s.pyq+countBlocks(s.questions)+s.rev), done=0;
+  for(let d=1;d<=s.days;d++){
+    for(const [type,n] of [['lec',s.lectures],['hw',s.hw],['dpp',s.dpp],['pyq',s.pyq],['q',countBlocks(s.questions)],['rev',s.rev]])
+      for(let i=0;i<n;i++) if(state.checks[`${d}-${type}-${i}`]) done++;
+  }
+  $('progress').textContent=(total?Math.round(done/total*100):0)+'%';
+  if(document.getElementById('printPages')) buildPrintPages();
+}
+$('generate').onclick=()=>{
+  settings.forEach(k=>state.settings[k]=Math.max(0,Number($(k).value)||0));
+  state.settings.days=Math.min(365,Math.max(1,state.settings.days));
+  save();render();
+};
+$('clear').onclick=()=>{
+  if(confirm('Clear all ticks?')){state.checks={};save();render();}
+};
+$('print').onclick=()=>{buildPrintPages();window.print();};
+$('themeBtn').onclick=()=>$('themeMenu').classList.toggle('open');
+document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>{
+  state.theme=b.dataset.theme;document.body.dataset.theme=state.theme;save();$('themeMenu').classList.remove('open');
+});
+render();
+/* =========================
+   SYLLABUS TRACKER MODULE
+   ========================= */
+const syllabusKey='examytrack-syllabus-v1';
+let syllabusData=JSON.parse(localStorage.getItem(syllabusKey)||'null')||[];
+
+const physicsExample=[
+  ['Physics','Motion in 1D',6],
+  ['Physics','Motion in 2D',6],
+  ['Physics','NLM',7],
+  ['Physics','Work energy power',5],
+  ['Physics','Circular motion',4],
+  ['Physics','Centre of mass',7],
+  ['Physics','Rotational motion',10],
+  ['Physics','Mechanical prop of solid',1],
+  ['Physics','Mechanical prop of fluids',6],
+  ['Physics','Thermal prop of matters',4],
+  ['Physics','KTG',2],
+  ['Physics','Oscillation',5],
+  ['Physics','Electric charges and field',6],
+  ['Physics','Electrostatic potential',4],
+  ['Physics','Gravitation',2],
+  ['Physics','Current Electricity',6],
+  ['Physics','Capacitance',4],
+  ['Physics','Moving charges and Magnetism',4],
+  ['Physics','Electromagnetic induc',5],
+  ['Physics','AC',4],
+  ['Physics','EM waves',1],
+  ['Physics','Ray optics',9]
 ];
 
-$("#theme").onclick=()=>{document.body.classList.toggle("dark");$("#theme").textContent=document.body.classList.contains("dark")?"☀":"☾"};
-$("#qpdf").onchange=e=>$("#qname").textContent=e.target.files[0]?.name||"PDF • click to select";
-$("#spdf").onchange=e=>$("#sname").textContent=e.target.files[0]?.name||"Optional • answer key / solutions";
-$("#demo").onclick=()=>start(demo,true);
-$("#build").onclick=build;
-$("#prev").onclick=()=>go(cur-1);
-$("#next").onclick=()=>go(cur+1);
-$("#mark").onclick=()=>{marks[cur]=!marks[cur];render()};
-$("#submit").onclick=()=>$("#confirm").classList.remove("hidden");
-$("#close").onclick=$("#cancel").onclick=()=>$("#confirm").classList.add("hidden");
-$("#yes").onclick=()=>{ $("#confirm").classList.add("hidden");finish() };
-$("#again").onclick=()=>{clearInterval(timer);show("builder")};
-
-function show(k){Object.values(pages).forEach(p=>p.classList.remove("active"));pages[k].classList.add("active");scrollTo(0,0)}
-
-async function build(){
- const f=$("#qpdf").files[0];
- if(!f){$("#status").textContent="Upload a question PDF first.";return}
- $("#build").disabled=true;$("#status").textContent="Extracting questions from PDF…";
- try{
-   const text=await pdfText(f);
-   const sol=$("#spdf").files[0]?await pdfText($("#spdf").files[0]):"";
-   const parsed=parse(text,sol);
-   if(!parsed.length)throw Error("No numbered multiple-choice questions were detected.");
-   const n=Math.min(+$("#count").value||parsed.length,parsed.length);
-   start(parsed.slice(0,n),false);
- }catch(e){$("#status").textContent=e.message+" Try the demo to preview the CBT."}
- finally{$("#build").disabled=false}
+function saveSyllabus(){localStorage.setItem(syllabusKey,JSON.stringify(syllabusData));}
+function esc(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function renderSyllabusPreview(){
+  const root=$('syllabusPreview');
+  if(!syllabusData.length){
+    root.innerHTML='<div style="padding:30px;text-align:center;color:var(--muted)">No chapters added yet. Add chapters above or load the Physics example.</div>';
+    return;
+  }
+  const groups={};
+  syllabusData.forEach((x,i)=>{(groups[x.subject]??=[]).push({...x,index:i});});
+  root.innerHTML='';
+  Object.entries(groups).forEach(([subject,items])=>{
+    const block=document.createElement('div');block.className='sySubjectBlock';
+    block.innerHTML=`<div class="sySubjectTitle"><span>${esc(subject)}</span><span>${items.length} chapter${items.length===1?'':'s'}</span></div>`;
+    const table=document.createElement('table');
+    table.innerHTML='<thead><tr><th>#</th><th>Chapter Name</th><th>Lecture Tracker</th><th>Total Lec</th><th>Main</th><th>Adv</th><th>Short Notes</th><th>DPP</th><th>HW</th><th>Module</th><th>PYQ</th><th>Test</th><th>R1</th><th>R2</th><th>R3</th><th>Action</th></tr></thead>';
+    const body=document.createElement('tbody');
+    items.forEach((item,n)=>{
+      const tr=document.createElement('tr');
+      let lec='';for(let i=1;i<=item.lectures;i++)lec+=`<span>L${i}</span>`;
+      tr.innerHTML=`<td>${n+1}</td><td>${esc(item.chapter)}</td><td><div class="lectureMini">${lec||'<span>—</span>'}</div></td><td>${item.lectures}</td>`+
+        '<td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td><td>□</td>'+
+        `<td><button class="deleteChapter" data-delete="${item.index}">Delete</button></td>`;
+      body.appendChild(tr);
+    });
+    table.appendChild(body);block.appendChild(table);root.appendChild(block);
+  });
+  root.querySelectorAll('[data-delete]').forEach(btn=>btn.onclick=()=>{
+    const idx=Number(btn.dataset.delete);syllabusData.splice(idx,1);saveSyllabus();renderSyllabusPreview();
+  });
 }
 
-async function pdfText(file){
- const lib=await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs");
- lib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs";
- const pdf=await lib.getDocument({data:await file.arrayBuffer()}).promise;
- let out="";
- for(let i=1;i<=pdf.numPages;i++){const p=await pdf.getPage(i);const c=await p.getTextContent();out+=c.items.map(x=>x.str).join(" ")+"\\n"}
- return out;
+function openSyllabus(){
+  $('syllabusModal').classList.add('open');
+  $('syllabusModal').setAttribute('aria-hidden','false');
+  renderSyllabusPreview();
+}
+function closeSyllabus(){
+  $('syllabusModal').classList.remove('open');
+  $('syllabusModal').setAttribute('aria-hidden','true');
 }
 
-function parse(text,sol){
- const chunks=text.replace(/\\u00a0/g," ").split(/(?=(?:^|\\n)\\s*(?:Q(?:uestion)?\\s*)?\\d+\\s*[.)-]\\s*)/i);
- const out=[];
- for(const ch of chunks){
-   const head=ch.match(/(?:^|\\n)\\s*(?:Q(?:uestion)?\\s*)?(\\d+)\\s*[.)-]\\s*/i); if(!head)continue;
-   const body=ch.slice(head.index+head[0].length).trim();
-   const re=/(?:^|\\s)\\(?([A-D])\\)?[.)]\\s*/gi, ms=[...body.matchAll(re)];
-   if(ms.length<2)continue;
-   const q=body.slice(0,ms[0].index).trim(), opts=[];
-   for(let i=0;i<ms.length;i++){const st=ms[i].index+ms[i][0].length,en=i+1<ms.length?ms[i+1].index:body.length;opts.push(body.slice(st,en).trim())}
-   const sm=sol.match(new RegExp("(?:question\\\\s*)?"+head[1]+"[\\\\s\\\\S]{0,250}?([A-D])","i"));
-   const answer=sm?sm[1].toUpperCase().charCodeAt(0)-65:null;
-   out.push({text:q,options:opts.slice(0,4),answer,solution:sm?"Solution extracted from the uploaded solution PDF.":"Answer key was not confidently detected.",subject:"General"});
- }
- return out;
+$('syllabusBtn').onclick=openSyllabus;
+$('closeSyllabus').onclick=closeSyllabus;
+$('syllabusModal').addEventListener('click',e=>{if(e.target===$('syllabusModal'))closeSyllabus();});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape' && $('syllabusModal').classList.contains('open'))closeSyllabus();});
+
+$('addChapter').onclick=()=>{
+  const subject=$('sySubject').value.trim();
+  const chapter=$('syChapter').value.trim();
+  const lectures=Math.max(0,Math.min(99,Number($('syLectures').value)||0));
+  if(!chapter){alert('Enter a chapter name.');$('syChapter').focus();return;}
+  syllabusData.push({subject,chapter,lectures});
+  saveSyllabus();renderSyllabusPreview();
+  $('syChapter').value='';$('syLectures').value='';$('syChapter').focus();
+};
+
+$('syChapter').addEventListener('keydown',e=>{if(e.key==='Enter')$('addChapter').click();});
+$('syLectures').addEventListener('keydown',e=>{if(e.key==='Enter')$('addChapter').click();});
+
+$('loadPhysicsExample').onclick=()=>{
+  syllabusData=physicsExample.map(([subject,chapter,lectures])=>({subject,chapter,lectures}));
+  saveSyllabus();renderSyllabusPreview();
+};
+$('clearSyllabus').onclick=()=>{
+  if(confirm('Clear the complete syllabus?')){syllabusData=[];saveSyllabus();renderSyllabusPreview();}
+};
+
+function syllabusPrintHTML(){
+  const perPage=22;
+  let pages='';
+  const groups={};
+  syllabusData.forEach(x=>(groups[x.subject]??=[]).push(x));
+  const chunks=[];
+  Object.entries(groups).forEach(([subject,items])=>{
+    for(let i=0;i<items.length;i+=perPage)chunks.push({subject,items:items.slice(i,i+perPage),offset:i});
+  });
+  if(!chunks.length)return '';
+  chunks.forEach((chunk,pi)=>{
+    const rows=chunk.items.map((item,i)=>{
+      const lec=[];for(let j=1;j<=item.lectures;j++)lec.push(`<span class="lectureItem"><i class="sq"></i>L${j}</span>`);
+      return `<tr><td>${chunk.offset+i+1}</td><td>${esc(item.chapter)}</td><td><div class="lectureBoxes">${lec.join('')}</div></td><td>${item.lectures}</td>`+
+        '<td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td><td><i class="tinySq"></i></td></tr>';
+    }).join('');
+    pages+=`<section class="syPage"><div class="syPageHeader"><div><h1>JEE SYLLABUS TRACKER</h1><div class="sySub">Offline Printable • Tick everything by hand</div></div><div class="sySub">${pi+1} / ${chunks.length}</div></div><div class="sySubject">${esc(chunk.subject)}</div><table><thead><tr><th>#</th><th>Chapter Name</th><th>Lecture Tracker</th><th>Total<br>Lec</th><th>Main<br>Level</th><th>Adv<br>Level</th><th>Short<br>Notes</th><th>DPP</th><th>HW</th><th>Module</th><th>PYQ</th><th>Test</th><th>R1</th><th>R2</th><th>R3</th></tr></thead><tbody>${rows}</tbody></table></section>`;
+  });
+  return pages;
 }
 
-function start(data,isDemo){
- qs=data;ans=Array(qs.length).fill(null);marks=Array(qs.length).fill(false);seen=Array(qs.length).fill(false);cur=0;
- mode=$("#mode").value;$("#testName").textContent=isDemo?"Demo CBT":($("#name").value||"CBT Test").toUpperCase();
- left=(+$("#minutes").value||180)*60;if(isDemo)left=10*60;
- show("test");render();clearInterval(timer);
- timer=setInterval(()=>{if(mode==="practice"){return}left--;if(left<=0){left=0;finish()}updateClock()},1000);updateClock();
-}
+$('downloadSyllabus').onclick=()=>{
+  if(!syllabusData.length){alert('Add at least one chapter first, or load the Physics example.');return;}
+  const printRoot=$('syllabusPrint');
+  printRoot.innerHTML=syllabusPrintHTML();
+  printRoot.classList.add('syllabus-printing');
+  // Give the browser one frame to build the printable DOM.
+  requestAnimationFrame(()=>setTimeout(()=>{
+    window.print();
+    setTimeout(()=>printRoot.classList.remove('syllabus-printing'),500);
+  },80));
+};
 
-function updateClock(){const h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;$("#clock").textContent=[h,m,s].map((x,i)=>i===0?String(x).padStart(2,"0"):String(x).padStart(2,"0")).join(":")}
-
-function render(){
- seen[cur]=true;const q=qs[cur];$("#qnum").textContent=`Question ${cur+1} of ${qs.length}`;$("#subject").textContent=q.subject||"General";$("#qtext").textContent=q.text;
- $("#options").innerHTML=q.options.map((o,i)=>`<label class="option ${ans[cur]===i?"selected":""}"><input type="radio" name="opt" value="${i}" ${ans[cur]===i?"checked":""}><span>${String.fromCharCode(65+i)}. ${escapeHtml(o)}</span></label>`).join("");
- $("#options").querySelectorAll("input").forEach(x=>x.onchange=()=>{ans[cur]=+x.value;render()});
- const box=$("#solution");if(mode==="practice"&&q.solution){box.classList.remove("hidden");box.innerHTML="<b>Solution</b><br>"+escapeHtml(q.solution)}else box.classList.add("hidden");
- $("#prev").disabled=cur===0;$("#next").textContent=cur===qs.length-1?"Finish →":"Save & Next →";$("#progress").textContent=`${ans.filter(x=>x!==null).length}/${qs.length}`;
- $("#grid").innerHTML=qs.map((_,i)=>`<button class="${ans[i]!==null?"answered ":""}${seen[i]&&!ans[i]===null?"visited ":""}${marks[i]?"marked ":""}">${i+1}</button>`).join("");
- $("#grid").querySelectorAll("button").forEach((b,i)=>b.onclick=()=>{cur=i;render()});
-}
-
-function go(n){if(n<0)return;if(n>=qs.length){$("#confirm").classList.remove("hidden");return}cur=n;render()}
-
-function finish(){
- clearInterval(timer);show("result");
- const total=qs.length, attempted=ans.filter(x=>x!==null).length, correct=qs.reduce((n,q,i)=>n+(ans[i]!==null&&q.answer!==null&&ans[i]===q.answer?1:0),0), wrong=attempted-correct;
- const pct=total?Math.round(correct/total*100):0;$("#rtitle").textContent=$("#testName").textContent;$("#percent").textContent=pct+"%";$("#summary").textContent=`${correct} correct out of ${total} questions · ${attempted} attempted`;
- $("#stats").innerHTML=[["Correct",correct],["Wrong",wrong],["Unattempted",total-attempted],["Accuracy",attempted?Math.round(correct/attempted*100)+"%":"0%"]].map(x=>`<div class="stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join("");
- const subjects={};qs.forEach((q,i)=>{const s=q.subject||"General";subjects[s]??={c:0,t:0};subjects[s].t++;if(ans[i]===q.answer)subjects[s].c++});
- $("#bars").innerHTML=Object.entries(subjects).map(([s,v])=>`<div class="bar-row"><div class="bar-head"><span>${s}</span><span>${Math.round(v.c/v.t*100)}%</span></div><div class="bar"><i style="width:${Math.round(v.c/v.t*100)}%"></i></div></div>`).join("");
- $("#review").innerHTML=qs.map((q,i)=>{const ok=ans[i]!==null&&q.answer!==null&&ans[i]===q.answer;return `<div class="review-row"><b>${i+1}.</b><span class="${ok?"correct":"wrong"}">${ans[i]===null?"Unattempted":ok?"Correct":"Incorrect"}</span> · <span>Answer: ${q.answer===null?"Not detected":String.fromCharCode(65+q.answer)}</span><div>${escapeHtml(q.solution||"No solution available.")}</div></div>`}).join("");
-}
-
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+renderSyllabusPreview();

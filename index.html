@@ -1,112 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ExamForge — CBT Test Builder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EXAMYTRACK — by Raj Sharma</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <a class="logo" href="#"><span>EXAM</span>FORGE <b>CBT</b></a>
-  <button id="theme" class="round">☾</button>
+<header>
+  <div>
+    <div class="eyebrow">JEE PREPARATION TRACKER</div>
+    <h1>📚 EXAMYTRACK</h1>
+    <p>by Raj Sharma · 14-Day Offline Progress Tracker</p>
+  </div>
+  <div class="headerActions"><button id="syllabusBtn">📚 Syllabus Tracker</button><button class="themeBtn" id="themeBtn">🎨 Themes</button></div>
 </header>
 
 <main>
-<section id="builder" class="page active">
-  <div class="hero">
-    <div class="eyebrow">JEE · NEET · CUSTOM CBT</div>
-    <h1>Paper in.<br><strong>CBT test out.</strong></h1>
-    <p>Upload a question paper and solution PDF, configure your test, and turn it into a clean, time-bound computer-based exam.</p>
+<section class="panel setup">
+  <div class="sectionTitle">Create your 14-day tracker</div>
+  <div class="grid">
+    <label>Number of Days
+      <input id="days" type="number" min="1" max="365" value="20">
+    </label>
+    <label>Total Lectures per day
+      <input id="lectures" type="number" min="0" max="30" value="4">
+    </label>
+    <label>HW / Module blocks per day
+      <input id="hw" type="number" min="0" max="20" value="1">
+    </label>
+    <label>DPP blocks per day
+      <input id="dpp" type="number" min="0" max="20" value="1">
+    </label>
+    <label>PYQ blocks per day
+      <input id="pyq" type="number" min="0" max="20" value="1">
+    </label>
+    <label>Total Questions per day
+      <input id="questions" type="number" min="0" max="300" value="30">
+    </label>
+    <label>REV blocks per day
+      <input id="rev" type="number" min="0" max="20" value="1">
+    </label>
   </div>
-
-  <div class="upload-grid">
-    <div class="card upload">
-      <div class="label">01 / QUESTION PAPER</div>
-      <label for="qpdf" class="drop">
-        <div class="drop-icon">↑</div><strong>Upload question PDF</strong>
-        <span id="qname">PDF • click to select</span>
-      </label>
-      <input id="qpdf" type="file" accept=".pdf,application/pdf">
-    </div>
-    <div class="card upload">
-      <div class="label">02 / SOLUTIONS</div>
-      <label for="spdf" class="drop">
-        <div class="drop-icon">+</div><strong>Upload solution PDF</strong>
-        <span id="sname">Optional • answer key / solutions</span>
-      </label>
-      <input id="spdf" type="file" accept=".pdf,application/pdf">
-    </div>
-  </div>
-
-  <div class="card settings">
-    <div class="label">03 / TEST CONFIGURATION</div>
-    <div class="fields">
-      <label>Test name<input id="name" value="My CBT Test"></label>
-      <label>Duration<input id="minutes" type="number" min="1" value="180"></label>
-      <label>Questions<input id="count" type="number" min="1" value="30"></label>
-      <label>Mode<select id="mode"><option value="exam">Exam mode</option><option value="practice">Practice mode</option></select></label>
-    </div>
-    <div class="hint">Best results: text-based PDFs with numbered questions and A/B/C/D options. Scanned/image PDFs may require OCR in a future backend version.</div>
-    <div class="actions"><button id="build" class="primary">Build CBT <span>→</span></button><button id="demo" class="ghost">Preview demo</button></div>
-    <div id="status"></div>
+  <div class="note">Questions are automatically converted at <b>10 questions = 1 checklist square</b>.</div>
+  <div class="actions">
+    <button class="primary" id="generate">＋ Generate Tracker</button>
+    <button id="clear">Clear Ticks</button>
+    <button id="print">🖨 Download / Print PDF</button>
   </div>
 </section>
 
-<section id="test" class="page">
-  <div class="exam-head">
-    <div><div class="mini">LIVE TEST</div><strong id="testName">CBT TEST</strong></div>
-    <div class="clock" id="clock">03:00:00</div>
-    <button id="submit" class="danger">Submit</button>
+<section class="panel trackerPanel">
+  <div class="trackerHead">
+    <div>
+      <div class="eyebrow">YOUR DAILY PLAN</div>
+      <h2>14-Day Checklist</h2>
+    </div>
+    <div class="progress" id="progress">0%</div>
   </div>
-  <div class="exam-grid">
-    <article class="card question">
-      <div class="qtop"><span id="qnum">Question 1</span><span id="subject">General</span></div>
-      <div id="qtext" class="qtext"></div>
-      <div id="options" class="options"></div>
-      <div id="solution" class="solution hidden"></div>
-      <div class="qactions">
-        <button id="prev" class="ghost">← Previous</button>
-        <button id="mark" class="ghost">⚑ Mark</button>
-        <button id="next" class="primary">Save & Next →</button>
+  <div class="tableWrap">
+    <table id="tracker"></table>
+  </div>
+</section>
+
+<!-- Generated automatically: 20 days per printable A4 page -->
+<div id="printPages"></div>
+
+<!-- Syllabus Tracker -->
+<div class="modal" id="syllabusModal" aria-hidden="true">
+  <div class="modalCard">
+    <div class="modalHead">
+      <div>
+        <div class="eyebrow">JEE SYLLABUS TRACKER</div>
+        <h2>📚 Syllabus Tracker</h2>
+        <p>Add Subject, Chapter Name and Total Lectures. The PDF is made for offline ticking.</p>
       </div>
-    </article>
-    <aside class="card palette">
-      <div class="pal-head"><b>Question palette</b><span id="progress">0/0</span></div>
-      <div id="grid" class="grid"></div>
-      <div class="legend">
-        <span><i class="a"></i>Answered</span><span><i class="v"></i>Visited</span>
-        <span><i class="m"></i>Review</span><span><i></i>Unanswered</span>
-      </div>
-    </aside>
-  </div>
-</section>
+      <button class="closeBtn" id="closeSyllabus">✕</button>
+    </div>
 
-<section id="result" class="page">
-  <div class="result-hero">
-    <div class="eyebrow">TEST COMPLETE</div>
-    <h2 id="rtitle">Your performance</h2>
-    <div id="percent" class="percent">0%</div>
-    <p id="summary"></p>
-  </div>
-  <div id="stats" class="stats"></div>
-  <div class="card analytics">
-    <div class="label">PERFORMANCE ANALYSIS</div>
-    <div id="bars"></div>
-  </div>
-  <div class="card review">
-    <div class="label">QUESTION REVIEW</div>
-    <div id="review"></div>
-  </div>
-  <button id="again" class="primary wide">Create another test →</button>
-</section>
-</main>
+    <div class="syllabusActionsTop">
+      <button id="loadPhysicsExample">⚡ Load Physics Example</button>
+      <button id="clearSyllabus">Clear Syllabus</button>
+      <button class="primary" id="downloadSyllabus">📄 Download A4 PDF</button>
+    </div>
 
-<div id="confirm" class="modal hidden">
- <div class="modal-box"><div class="modal-x" id="close">×</div><h3>Submit test?</h3><p>Your answers will be locked and the analysis will be generated.</p><div class="modal-actions"><button id="cancel" class="ghost">Cancel</button><button id="yes" class="danger">Submit test</button></div></div>
+    <div class="syllabusForm">
+      <label>Subject
+        <select id="sySubject">
+          <option>Physics</option><option>Chemistry</option><option>Mathematics</option><option>Biology</option><option>Other</option>
+        </select>
+      </label>
+      <label>Chapter Name
+        <input id="syChapter" placeholder="e.g. Laws of Motion">
+      </label>
+      <label>Total Lectures
+        <input id="syLectures" type="number" min="0" max="99" placeholder="e.g. 13">
+      </label>
+      <button class="primary addChapterBtn" id="addChapter">＋ Add Chapter</button>
+    </div>
+
+    <div class="syNote">Each lecture gets an <b>L1, L2, L3...</b> box. The PDF also includes separate boxes for <b>Main Level, Adv Level, Short Notes, DPP, HW, Module, PYQ, Test, R1, R2 and R3</b>.</div>
+    <div id="syllabusPreview" class="syllabusPreview"></div>
+  </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs" type="module"></script>
-<script src="script.js" type="module"></script>
+<!-- Printable syllabus PDF -->
+<div id="syllabusPrint"></div>
+</main>
+
+<div class="themeMenu" id="themeMenu">
+  <div class="themeTitle">Choose Theme</div>
+  <button data-theme="dark">🌑 Dark</button>
+  <button data-theme="red">🔴 Dark Red</button>
+  <button data-theme="yellow">🟡 Dark Yellow</button>
+  <button data-theme="ocean">🔵 Ocean</button>
+  <button data-theme="purple">🟣 Purple</button>
+  <button data-theme="emerald">🟢 Emerald</button>
+  <button data-theme="light">☀️ Light</button>
+  <button data-theme="brutal">⬛ Brutalist</button>
+  <button data-theme="bento">🍱 Bento</button>
+  <button data-theme="midnight">🌌 Midnight</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
