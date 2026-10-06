@@ -230,15 +230,57 @@ function syllabusPrintHTML(){
 }
 
 $('downloadSyllabus').onclick=()=>{
-  if(!syllabusData.length){alert('Add at least one chapter first, or load the Physics example.');return;}
-  const printRoot=$('syllabusPrint');
-  printRoot.innerHTML=syllabusPrintHTML();
-  printRoot.classList.add('syllabus-printing');
-  // Give the browser one frame to build the printable DOM.
-  requestAnimationFrame(()=>setTimeout(()=>{
-    window.print();
-    setTimeout(()=>printRoot.classList.remove('syllabus-printing'),500);
-  },80));
+  if(!syllabusData.length){
+    alert('Add at least one chapter first, or load the Physics example.');
+    return;
+  }
+
+  // Build a completely standalone print document. This avoids CSS/modal
+  // visibility issues that can make Chrome's PDF preview appear blank,
+  // especially on Android.
+  const content=syllabusPrintHTML();
+  const css=`
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#fff;color:#111}
+    body{font-family:Arial,Helvetica,sans-serif}
+    .syPage{width:100%;page-break-after:always;break-after:page;padding:0}
+    .syPage:last-child{page-break-after:auto;break-after:auto}
+    .syPageHeader{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4mm}
+    h1{font-size:17pt;margin:0 0 1mm;color:#111}
+    .sySub{font-size:8pt;color:#333}
+    .sySubject{font-size:12pt;font-weight:900;margin:3mm 0 1.5mm;text-transform:uppercase}
+    table{width:100%;border-collapse:collapse;table-layout:fixed;color:#111}
+    th,td{border:1px solid #111;text-align:center;vertical-align:middle}
+    th{font-size:6.6pt;height:8mm;background:#e9e9e9!important;padding:1mm .7mm;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    td{font-size:7pt;height:10mm;padding:1mm .6mm}
+    td:nth-child(1),th:nth-child(1){width:4%}
+    td:nth-child(2),th:nth-child(2){width:17%;text-align:left}
+    td:nth-child(3),th:nth-child(3){width:22%}
+    td:nth-child(4),th:nth-child(4){width:5%}
+    td:nth-child(n+5),th:nth-child(n+5){width:4.7%}
+    td:nth-child(2){font-weight:700}
+    .lectureBoxes{display:flex;flex-wrap:wrap;gap:1.1mm;justify-content:flex-start;align-items:center}
+    .lectureItem{display:flex;align-items:center;gap:.7mm;white-space:nowrap}
+    .sq{width:3.3mm;height:3.3mm;border:1px solid #111;display:inline-block;box-sizing:border-box}
+    .tinySq{width:3.8mm;height:3.8mm;border:1px solid #111;display:inline-block}
+    @page{size:A4 landscape;margin:7mm}
+  `;
+
+  const w=window.open('', '_blank');
+  if(!w){
+    alert('Please allow pop-ups for EXAMYTRACK, then try again.');
+    return;
+  }
+  w.document.open();
+  w.document.write(`<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JEE Syllabus Tracker</title><style>${css}</style></head><body>${content}</body></html>`);
+  w.document.close();
+
+  // Wait until the standalone document has been laid out before opening
+  // Android/Chrome's print-to-PDF screen.
+  w.onload=()=>setTimeout(()=>{
+    w.focus();
+    w.print();
+  },300);
 };
 
 renderSyllabusPreview();
